@@ -9,6 +9,7 @@ import org.usfirst.frc.team2175.properties.WiringProperties;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class BaseSubsystem extends Subsystem {
@@ -39,6 +40,10 @@ public class BaseSubsystem extends Subsystem {
 		WiringProperties wiringProperties = ServiceLocator
 				.get(WiringProperties.class);
 		return wiringProperties.getSolenoidInfo(key);
+	}
+
+	public void setDefaultCommand(Command command) {
+		super.setDefaultCommand(command);
 	}
 
 	@Override

@@ -52,4 +52,25 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 		slave.changeControlMode(CANTalon.TalonControlMode.Follower);
 		slave.set(master.getDeviceID());
 	}
+
+	private void setGear(final boolean forward) {
+		driveShifters.set(forward);
+	}
+
+	public void shiftToHighGear() {
+		setGear(true);
+	}
+
+	public void shiftToLowGear() {
+		setGear(false);
+	}
+
+	public void stopAllMotors() {
+		leftMasterMotor.set(0);
+		rightMasterMotor.set(0);
+	}
+
+	public void arcadeDrive(double moveValue, double turnValue) {
+		robotDrive.arcadeDrive(moveValue, turnValue);
+	}
 }

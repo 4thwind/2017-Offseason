@@ -75,4 +75,16 @@ public class DriverStation {
 		return buttonMap.get(key);
 
 	}
+
+	public double getMoveValue() {
+		return leftJoystick.getY();
+	}
+
+	public double getTurnValue() {
+		return rightJoystick.getX();
+	}
+
+	public double getClimberSpinSpeed() {
+		return gamepad.getRawAxis(1) * .1;
+	}
 }
