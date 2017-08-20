@@ -35,7 +35,7 @@ public abstract class BaseProperties {
 		return Integer.parseInt(propertyValue);
 	}
 
-	protected double getDoublePropertyValue(final String propertyName) {
+	protected double getDouble(final String propertyName) {
 		final String propertyValue = getStringPropertyValue(propertyName);
 		return Double.parseDouble(propertyValue);
 	}
@@ -70,6 +70,18 @@ public abstract class BaseProperties {
 			returnValues[i] = splitValues[i].trim();
 		}
 		return returnValues;
+	}
+
+	protected boolean getReversed(final String id) {
+		return Boolean.parseBoolean(getString(id)[1]);
+	}
+
+	protected int getInt(String id, int slot) {
+		return Integer.parseInt(getString(id)[slot]);
+	}
+
+	protected String[] getString(String id) {
+		return getStringArrayPropertyValue(id);
 	}
 
 	public String getFullyQualifiedPropertyFileName() {

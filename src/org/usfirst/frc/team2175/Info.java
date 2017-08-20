@@ -21,6 +21,24 @@ public class Info {
 		}
 	}
 
+	public static class ButtonInfo {
+		public final String joystickName;
+		public final int buttonNumber;
+		public ButtonInfo(final String joystickName, final int buttonNumber) {
+			this.joystickName = joystickName;
+			this.buttonNumber = buttonNumber;
+		}
+	}
+
+	public static class BehaviorInfo {
+		public final double inSpeed;
+		public final double outSpeed;
+		public BehaviorInfo(double inSpeed, double outSpeed) {
+			this.inSpeed = inSpeed;
+			this.outSpeed = outSpeed;
+		}
+	}
+
 	public static class EncoderInfo {
 		public final int sourceA;
 		public final int sourceB;
@@ -31,6 +49,14 @@ public class Info {
 			this.sourceA = sourceA;
 			this.sourceB = sourceB;
 			this.isInverted = isInverted;
+		}
+	}
+
+	public static class DigitalInfo {
+		public final int channel;
+
+		public DigitalInfo(int channel) {
+			this.channel = channel;
 		}
 	}
 }
