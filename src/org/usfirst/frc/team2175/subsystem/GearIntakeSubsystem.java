@@ -1,51 +1,44 @@
 package org.usfirst.frc.team2175.subsystem;
 
-import com.ctre.CANTalon;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import org.usfirst.frc.team2175.SolenoidWrapper;
+import org.usfirst.frc.team2175.TunedMotor;
+import org.usfirst.frc.team2175.identifiers.BehaviorIDs;
+import org.usfirst.frc.team2175.identifiers.MotorIDs;
+import org.usfirst.frc.team2175.identifiers.SolenoidIDs;
 
 public class GearIntakeSubsystem extends BaseSubsystem {
-	private CANTalon motor;
-	private DoubleSolenoid actuator;
-
-	private double inSpeed;
-	private double outSpeed;
+	private SolenoidWrapper actuator;
+	private TunedMotor motor;
 
 	public GearIntakeSubsystem() {
-		motor = new CANTalon(7);
-		motor.reverseOutput(true);
-		actuator = new DoubleSolenoid(3, 4);
+		motor = new TunedMotor(getMotorInfo(MotorIDs.GEAR_INTAKE),
+				getBehaviorInfo(BehaviorIDs.GEAR_INTAKE));
 
-		inSpeed = 1;
-		outSpeed = -1;
+		actuator = new SolenoidWrapper(
+				getSolenoidInfo(SolenoidIDs.GEAR_INTAKE));
 	}
 
 	public void runIn() {
-		motor.set(inSpeed);
+		motor.spinIn();
 	}
 
 	public void runOut() {
-		motor.set(outSpeed);
-	}
-
-	public void raise() {
-		actuator.set(Value.kReverse);
-	}
-
-	public void lower() {
-		actuator.set(Value.kForward);
+		motor.spinOut();
 	}
 
 	public void stop() {
-		motor.set(0);
+		motor.stop();
+	}
+
+	public void raise() {
+		actuator.set(false);
+	}
+
+	public void lower() {
+		actuator.set(true);
 	}
 
 	public void toggleActuation() {
-		if (actuator.get() == Value.kForward) {
-			raise();
-		} else {
-			lower();
-		}
+		actuator.set(!actuator.get());
 	}
 }

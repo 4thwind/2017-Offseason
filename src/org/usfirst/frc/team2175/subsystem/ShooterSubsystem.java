@@ -1,37 +1,63 @@
 package org.usfirst.frc.team2175.subsystem;
 
-import com.ctre.CANTalon;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+import org.usfirst.frc.team2175.SolenoidWrapper;
+import org.usfirst.frc.team2175.TunedMotor;
+import org.usfirst.frc.team2175.identifiers.BehaviorIDs;
+import org.usfirst.frc.team2175.identifiers.MotorIDs;
+import org.usfirst.frc.team2175.identifiers.SolenoidIDs;
 
 public class ShooterSubsystem extends BaseSubsystem {
-	private DoubleSolenoid angleSolenoid;
+	private SolenoidWrapper angleSolenoid;
 
-	private CANTalon shooter;
-	private double shooterSpeed;
-	private double shooterReverseSpeed;
-
-	private CANTalon feeder;
-	private double feederSpeed;
-	private double feederReverseSpeed;
-
-	private CANTalon agitator;
-	private double agitatorSpeed;
-	private double agitatorReverseSpeed;
+	private TunedMotor shooter;
+	private TunedMotor feeder;
+	private TunedMotor agitator;
 
 	public ShooterSubsystem() {
-		angleSolenoid = new DoubleSolenoid(0, 0);
+		angleSolenoid = new SolenoidWrapper(
+				getSolenoidInfo(SolenoidIDs.SHOOTER_ACTUATOR));
 
-		shooter = new CANTalon(0);
-		shooterSpeed = 1;
-		shooterReverseSpeed = -1;
+		shooter = new TunedMotor(getMotorInfo(MotorIDs.SHOOTER),
+				getBehaviorInfo(BehaviorIDs.SHOOTER));
+		feeder = new TunedMotor(getMotorInfo(MotorIDs.FEEDER),
+				getBehaviorInfo(BehaviorIDs.FEEDER));
+		agitator = new TunedMotor(getMotorInfo(MotorIDs.AGITATOR),
+				getBehaviorInfo(BehaviorIDs.AGITATOR));
+	}
 
-		feeder = new CANTalon(0);
-		feederSpeed = 1;
-		feederReverseSpeed = -1;
+	public void spinShooterOut() {
+		shooter.spinOut();
+	}
 
-		agitator = new CANTalon(0);
-		agitatorSpeed = 1;
-		agitatorReverseSpeed = -1;
+	public void spinShooterIn() {
+		shooter.spinIn();
+	}
+
+	public void spinFeederOut() {
+		feeder.spinOut();
+	}
+
+	public void spinFeederIn() {
+		feeder.spinIn();
+	}
+
+	public void spinAgitatorOut() {
+		agitator.spinOut();
+	}
+
+	public void spinAgitatorIn() {
+		agitator.spinIn();
+	}
+
+	public void moreAngle() {
+		angleSolenoid.set(false);
+	}
+
+	public void lessAngle() {
+		angleSolenoid.set(true);
+	}
+
+	public void toggleAngle() {
+		angleSolenoid.set(!angleSolenoid.get());
 	}
 }

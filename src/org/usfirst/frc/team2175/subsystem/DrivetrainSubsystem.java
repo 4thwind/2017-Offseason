@@ -1,9 +1,12 @@
 package org.usfirst.frc.team2175.subsystem;
 
+import org.usfirst.frc.team2175.SolenoidWrapper;
+import org.usfirst.frc.team2175.identifiers.MotorIDs;
+import org.usfirst.frc.team2175.identifiers.SolenoidIDs;
+
 import com.ctre.CANTalon;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
@@ -19,26 +22,28 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	private Encoder encoder;
 	private RobotDrive robotDrive;
 
-	private DoubleSolenoid driveShifters;
+	private SolenoidWrapper driveShifters;
 
 	private AHRS navXGyro;
 
 	public DrivetrainSubsystem() {
-		leftMasterMotor = new CANTalon(0);
-		leftSlaveMotorOne = new CANTalon(0);
-		leftSlaveMotorTwo = new CANTalon(0);
-		rightMasterMotor = new CANTalon(0);
-		rightSlaveMotorOne = new CANTalon(0);
-		rightSlaveMotorTwo = new CANTalon(0);
+		leftMasterMotor = motorFromInfoID(MotorIDs.LEFT_MASTER);
+		leftSlaveMotorOne = motorFromInfoID(MotorIDs.LEFT_SLAVEONE);
+		leftSlaveMotorTwo = motorFromInfoID(MotorIDs.LEFT_SLAVETWO);
+		rightMasterMotor = motorFromInfoID(MotorIDs.RIGHT_MASTER);
+		rightSlaveMotorOne = motorFromInfoID(MotorIDs.RIGHT_SLAVEONE);
+		rightSlaveMotorTwo = motorFromInfoID(MotorIDs.RIGHT_SLAVETWO);
 
 		setSlave(leftSlaveMotorOne, leftMasterMotor);
 		setSlave(leftSlaveMotorTwo, leftMasterMotor);
 		setSlave(rightSlaveMotorOne, rightMasterMotor);
 		setSlave(rightSlaveMotorTwo, rightMasterMotor);
 
-		driveShifters = new DoubleSolenoid(0, 0);
-
 		robotDrive = new RobotDrive(leftMasterMotor, rightMasterMotor);
+
+		driveShifters = new SolenoidWrapper(
+				getSolenoidInfo(SolenoidIDs.DRIVE_SHIFTERS));
+
 		navXGyro = new AHRS(SPI.Port.kMXP);
 		encoder = new Encoder(0, 0);
 	}

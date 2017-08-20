@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2175.subsystem;
 
+import org.usfirst.frc.team2175.identifiers.BehaviorIDs;
+import org.usfirst.frc.team2175.identifiers.MotorIDs;
+
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
 
@@ -9,12 +12,11 @@ public class ClimberSubsystem extends BaseSubsystem {
 	private double maxClimberSpeed;
 
 	public ClimberSubsystem() {
-		motorOne = new CANTalon(13);
-		motorOne.reverseOutput(true);
-		motorTwo = new CANTalon(14);
+		motorOne = motorFromInfoID(MotorIDs.CLIMBER_ONE);
+		motorTwo = motorFromInfoID(MotorIDs.CLIMBER_TWO);
 		motorTwo.changeControlMode(TalonControlMode.Follower);
 		motorTwo.set(motorOne.getDeviceID());
-		maxClimberSpeed = 1;
+		maxClimberSpeed = getBehaviorInfo(BehaviorIDs.CLIMBER).inSpeed;
 	}
 
 	public double getMaxClimberSpeed() {

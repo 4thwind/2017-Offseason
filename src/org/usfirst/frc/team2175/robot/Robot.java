@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2175.robot;
 
+import org.usfirst.frc.team2175.control.DriverStation;
 import org.usfirst.frc.team2175.properties.PropertiesFactory;
 import org.usfirst.frc.team2175.subsystem.SubsystemFactory;
 
@@ -12,6 +13,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		PropertiesFactory.makeAll();
 		SubsystemFactory.makeAll();
+
+		new DriverStation();
 	}
 
 	@Override

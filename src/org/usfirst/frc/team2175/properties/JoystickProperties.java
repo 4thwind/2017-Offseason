@@ -12,6 +12,7 @@ public class JoystickProperties extends BaseProperties {
 
 	@Override
 	protected void populate() {
+
 		buttonInfoMap = new HashMap<>();
 		ButtonIDs bIDs = new ButtonIDs();
 		for (Field field : bIDs.getClass().getDeclaredFields()) {
@@ -23,6 +24,10 @@ public class JoystickProperties extends BaseProperties {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public ButtonInfo getButtonInfo(String key) {
+		return buttonInfoMap.get(key);
 	}
 
 	private void createInfoFromProps(String id) {
