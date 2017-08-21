@@ -46,6 +46,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 
 		navXGyro = new AHRS(SPI.Port.kMXP);
 		encoder = new Encoder(0, 0);
+		encoder.setDistancePerPulse(1);
 	}
 
 	private void setSlave(final CANTalon slave, final CANTalon master) {
@@ -72,5 +73,29 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 
 	public void arcadeDrive(double moveValue, double turnValue) {
 		robotDrive.arcadeDrive(moveValue, turnValue);
+	}
+
+	public void straightArcadeDrive(double moveValue) {
+		arcadeDrive(moveValue, -navXGyro.getAngle() / 45);
+	}
+
+	public void resetEncoders() {
+		encoder.reset();
+	}
+
+	public void resetGyro() {
+		navXGyro.reset();
+	}
+
+	public boolean isCurrentGreatEnough() {
+		return leftMasterMotor.getOutputCurrent() > 30;
+	}
+
+	public int getEncoderDistance() {
+		return encoder.get();
+	}
+
+	public double convertFromInchesToClicks(double inchesToDrive) {
+		return inchesToDrive * 40.21;
 	}
 }

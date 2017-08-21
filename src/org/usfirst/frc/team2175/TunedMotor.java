@@ -26,4 +26,8 @@ public class TunedMotor {
 	public void stop() {
 		motor.set(0);
 	}
+
+	public boolean isRunning() {
+		return motor.get() != 0;
+	}
 }

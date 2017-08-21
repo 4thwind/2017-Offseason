@@ -60,4 +60,20 @@ public class ShooterSubsystem extends BaseSubsystem {
 	public void toggleAngle() {
 		angleSolenoid.set(!angleSolenoid.get());
 	}
+
+	public boolean isShooterRunning() {
+		return shooter.isRunning();
+	}
+
+	public void stopFeeder() {
+		feeder.stop();
+	}
+
+	public void stopAgitator() {
+		agitator.stop();
+	}
+
+	public void stopShooter() {
+		shooter.stop();
+	}
 }
