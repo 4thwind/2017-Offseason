@@ -87,4 +87,14 @@ public class DriverStation {
 	public double getClimberSpinSpeed() {
 		return gamepad.getRawAxis(1) * .1;
 	}
+
+	public double getOutput(final double input, final double deadbandSize) {
+		double output = 0;
+		if (Math.abs(input) >= deadbandSize) {
+			double slope = 1 / (1 - deadbandSize);
+			double sign = Math.signum(input);
+			output = slope * sign * (Math.abs(input) - deadbandSize);
+		}
+		return output;
+	}
 }
