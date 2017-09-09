@@ -1,8 +1,6 @@
 package org.usfirst.frc.team2175.subsystem;
 
 import org.usfirst.frc.team2175.SolenoidWrapper;
-import org.usfirst.frc.team2175.identifiers.MotorIDs;
-import org.usfirst.frc.team2175.identifiers.SolenoidIDs;
 
 import com.ctre.CANTalon;
 import com.kauailabs.navx.frc.AHRS;
@@ -27,12 +25,6 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	private AHRS navXGyro;
 
 	public DrivetrainSubsystem() {
-		leftMasterMotor = motorFromInfoID(MotorIDs.LEFT_MASTER);
-		leftSlaveMotorOne = motorFromInfoID(MotorIDs.LEFT_SLAVEONE);
-		leftSlaveMotorTwo = motorFromInfoID(MotorIDs.LEFT_SLAVETWO);
-		rightMasterMotor = motorFromInfoID(MotorIDs.RIGHT_MASTER);
-		rightSlaveMotorOne = motorFromInfoID(MotorIDs.RIGHT_SLAVEONE);
-		rightSlaveMotorTwo = motorFromInfoID(MotorIDs.RIGHT_SLAVETWO);
 
 		setSlave(leftSlaveMotorOne, leftMasterMotor);
 		setSlave(leftSlaveMotorTwo, leftMasterMotor);
@@ -40,9 +32,6 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 		setSlave(rightSlaveMotorTwo, rightMasterMotor);
 
 		robotDrive = new RobotDrive(leftMasterMotor, rightMasterMotor);
-
-		driveShifters = new SolenoidWrapper(
-				getSolenoidInfo(SolenoidIDs.DRIVE_SHIFTERS));
 
 		navXGyro = new AHRS(SPI.Port.kMXP);
 		encoder = new Encoder(0, 0);
