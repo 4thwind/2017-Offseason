@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team2175.robot;
 
-import org.usfirst.frc.team2175.info.WiringInfo;
+import org.usfirst.frc.team2175.info.InfoLocator;
 import org.usfirst.frc.team2175.subsystem.SubsystemFactory;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -10,7 +10,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void robotInit() {
-		new WiringInfo();
+		new InfoLocator();
 		SubsystemFactory.makeAll();
 
 		// new DriverStation();

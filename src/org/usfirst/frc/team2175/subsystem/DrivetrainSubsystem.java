@@ -3,7 +3,7 @@ package org.usfirst.frc.team2175.subsystem;
 import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.SolenoidWrapper;
 import org.usfirst.frc.team2175.identifiers.WiringKeys;
-import org.usfirst.frc.team2175.info.WiringInfo;
+import org.usfirst.frc.team2175.info.InfoLocator;
 
 import com.ctre.CANTalon;
 import com.kauailabs.navx.frc.AHRS;
@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
 
 public class DrivetrainSubsystem extends BaseSubsystem {
-	private WiringInfo wiringInfo;
+	private InfoLocator infoLocator;
 	private CANTalon leftMaster;
 	private CANTalon leftSlaveOne;
 	private CANTalon leftSlaveTwo;
@@ -29,7 +29,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	private AHRS navXGyro;
 
 	public DrivetrainSubsystem() {
-		wiringInfo = ServiceLocator.get(WiringInfo.class);
+		infoLocator = ServiceLocator.get(InfoLocator.class);
 
 		leftMaster = makeMotor(WiringKeys.LEFT_MASTER);
 		leftSlaveOne = makeMotor(WiringKeys.LEFT_SLAVEONE);
@@ -51,7 +51,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	}
 
 	private CANTalon makeMotor(String info) {
-		String[] infos = wiringInfo.getInfo(info).split(",");
+		String[] infos = infoLocator.getWiringInfo(info).split(",");
 		CANTalon motor = new CANTalon(Integer.parseInt(infos[0].trim()));
 		boolean revOut = (infos[1].trim() == "true");
 		motor.reverseOutput(revOut);
