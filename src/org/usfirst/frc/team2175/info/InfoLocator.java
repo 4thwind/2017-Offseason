@@ -4,23 +4,18 @@ import java.util.HashMap;
 
 import org.usfirst.frc.team2175.ServiceLocator;
 
-public class InfoLocator extends WiringInfo {
+public class InfoLocator {
 	private HashMap<String, String> wiringInfo;
+	private final boolean isComp = true;
 
 	public InfoLocator() {
-		wiringInfo = new HashMap<>();
-		boolean isComp = true;
-		fillWiringMap(isComp);
+		makeWiringInfoMap();
 		ServiceLocator.register(this);
 	}
 
-	private void fillWiringMap(boolean isComp) {
-		if (isComp) {
-			fillWiringComp(wiringInfo);
-		} else {
-			fillWiringPrac(wiringInfo);
-		}
-
+	private void makeWiringInfoMap() {
+		wiringInfo = new HashMap<>();
+		WiringInfo.fillWiringMap(isComp, wiringInfo);
 	}
 
 	public String getWiringInfo(String id) {

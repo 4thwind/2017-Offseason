@@ -6,7 +6,16 @@ import org.usfirst.frc.team2175.identifiers.WiringKeys;
 
 public class WiringInfo {
 
-	protected void fillWiringPrac(HashMap<String, String> wiringInfo) {
+	protected static void fillWiringMap(boolean isComp,
+			HashMap<String, String> wiringInfo) {
+		if (isComp) {
+			fillWiringComp(wiringInfo);
+		} else {
+			fillWiringPrac(wiringInfo);
+		}
+	}
+
+	protected static void fillWiringPrac(HashMap<String, String> wiringInfo) {
 		// wiringInfo.put(Identifier, String of id, isReversed);
 		wiringInfo.put(WiringKeys.LEFT_MASTER, "1, false");
 		wiringInfo.put(WiringKeys.LEFT_SLAVEONE, "2, false");
@@ -25,7 +34,7 @@ public class WiringInfo {
 		wiringInfo.put(WiringKeys.CLIMBER_TWO, "12, false");
 	}
 
-	protected void fillWiringComp(HashMap<String, String> wiringInfo) {
+	protected static void fillWiringComp(HashMap<String, String> wiringInfo) {
 		// wiringInfo.put(Identifier, String of id, isReversed);
 		wiringInfo.put(WiringKeys.LEFT_MASTER, "1, false");
 		wiringInfo.put(WiringKeys.LEFT_SLAVEONE, "2, false");
