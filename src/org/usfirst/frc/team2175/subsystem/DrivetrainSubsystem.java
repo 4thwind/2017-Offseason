@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2175.subsystem;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.SolenoidWrapper;
 import org.usfirst.frc.team2175.identifiers.WiringKeys;
 import org.usfirst.frc.team2175.info.InfoLocator;
 
@@ -24,7 +23,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	private Encoder encoder;
 	private RobotDrive robotDrive;
 
-	private SolenoidWrapper driveShifters;
+	// private SolenoidWrapper driveShifters;
 
 	private AHRS navXGyro;
 
@@ -64,7 +63,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	}
 
 	private void setGear(final boolean forward) {
-		driveShifters.set(forward);
+		// driveShifter.set(forward);
 	}
 
 	public void shiftToHighGear() {

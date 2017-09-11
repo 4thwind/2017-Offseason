@@ -5,51 +5,33 @@ import java.util.HashMap;
 import org.usfirst.frc.team2175.identifiers.WiringKeys;
 
 public class WiringInfo {
+	private static boolean isCompetitionBot;
 
 	protected static void fillWiringMap(boolean isComp,
 			HashMap<String, String> wiringInfo) {
-		if (isComp) {
-			fillWiringComp(wiringInfo);
-		} else {
-			fillWiringPrac(wiringInfo);
-		}
+		isCompetitionBot = isComp;
+		
+		// put(HashMap, compInfo, pracInfo, id);
+		put(wiringInfo, "1, false", "1, false", WiringKeys.LEFT_MASTER);
+		put(wiringInfo, "2, false", "2, false",  WiringKeys.LEFT_SLAVEONE);
+		put(wiringInfo, "2, false", "2, false", WiringKeys.LEFT_SLAVETWO);
+		put(wiringInfo, "2, false", "2, false", WiringKeys.RIGHT_MASTER);
+		put(wiringInfo, "2, false", "2, false", WiringKeys.RIGHT_SLAVEONE);
+		put(wiringInfo, "2, false", "2, false", WiringKeys.RIGHT_SLAVETWO);
+		
+		put(wiringInfo, "2, false", "2, false", WiringKeys.AGITATOR);
+		put(wiringInfo, "2, false", "2, false", WiringKeys.SHOOTER);
+		put(wiringInfo, "2, false", "2, false", WiringKeys.TURRET);
+		
+		put(wiringInfo, "2, false", "2, false", WiringKeys.GEAR_INTAKE);
+		
+		put(wiringInfo, "2, false", "2, false", WiringKeys.CLIMBER_ONE);
+		put(wiringInfo, "2, false", "2, false", WiringKeys.CLIMBER_TWO);
 	}
 
-	protected static void fillWiringPrac(HashMap<String, String> wiringInfo) {
-		// wiringInfo.put(Identifier, String of id, isReversed);
-		wiringInfo.put(WiringKeys.LEFT_MASTER, "1, false");
-		wiringInfo.put(WiringKeys.LEFT_SLAVEONE, "2, false");
-		wiringInfo.put(WiringKeys.LEFT_SLAVETWO, "3, false");
-		wiringInfo.put(WiringKeys.RIGHT_MASTER, "4, false");
-		wiringInfo.put(WiringKeys.RIGHT_SLAVEONE, "5, false");
-		wiringInfo.put(WiringKeys.RIGHT_SLAVETWO, "6, false");
-
-		wiringInfo.put(WiringKeys.AGITATOR, "7, false");
-		wiringInfo.put(WiringKeys.SHOOTER, "8, false");
-		wiringInfo.put(WiringKeys.TURRET, "9, false");
-
-		wiringInfo.put(WiringKeys.GEAR_INTAKE, "10, false");
-
-		wiringInfo.put(WiringKeys.CLIMBER_ONE, "11, false");
-		wiringInfo.put(WiringKeys.CLIMBER_TWO, "12, false");
-	}
-
-	protected static void fillWiringComp(HashMap<String, String> wiringInfo) {
-		// wiringInfo.put(Identifier, String of id, isReversed);
-		wiringInfo.put(WiringKeys.LEFT_MASTER, "1, false");
-		wiringInfo.put(WiringKeys.LEFT_SLAVEONE, "2, false");
-		wiringInfo.put(WiringKeys.LEFT_SLAVETWO, "3, false");
-		wiringInfo.put(WiringKeys.RIGHT_MASTER, "4, false");
-		wiringInfo.put(WiringKeys.RIGHT_SLAVEONE, "5, false");
-		wiringInfo.put(WiringKeys.RIGHT_SLAVETWO, "6, false");
-
-		wiringInfo.put(WiringKeys.AGITATOR, "7, false");
-		wiringInfo.put(WiringKeys.SHOOTER, "8, false");
-		wiringInfo.put(WiringKeys.TURRET, "9, false");
-
-		wiringInfo.put(WiringKeys.GEAR_INTAKE, "10, false");
-
-		wiringInfo.put(WiringKeys.CLIMBER_ONE, "11, false");
-		wiringInfo.put(WiringKeys.CLIMBER_TWO, "12, false");
+	private static void put(HashMap<String, String> wiringInfo, String compData, String pracData, String id) {
+		String data = (isCompetitionBot) ? compData: pracData;
+		// wiringInfo.put(Identifier, String of id and isReversed);
+		wiringInfo.put(id, data);
 	}
 }
