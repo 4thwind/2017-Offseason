@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2175.subsystem;
 
 import org.usfirst.frc.team2175.ServiceLocator;
+import org.usfirst.frc.team2175.SolenoidWrapper;
 import org.usfirst.frc.team2175.identifiers.WiringKeys;
 import org.usfirst.frc.team2175.info.InfoLocator;
 
@@ -23,7 +24,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	private Encoder encoder;
 	private RobotDrive robotDrive;
 
-	// private SolenoidWrapper driveShifters;
+	private SolenoidWrapper driveShifters;
 
 	private AHRS navXGyro;
 
@@ -52,8 +53,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	private CANTalon makeMotor(String info) {
 		String[] infos = infoLocator.getWiringInfo(info).split(",");
 		CANTalon motor = new CANTalon(Integer.parseInt(infos[0].trim()));
-		boolean revOut = (infos[1].trim() == "true");
-		motor.reverseOutput(revOut);
+		motor.reverseOutput(infos[1].trim() == "true");
 		return motor;
 	}
 
@@ -63,7 +63,7 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	}
 
 	private void setGear(final boolean forward) {
-		// driveShifter.set(forward);
+		driveShifters.set(forward);
 	}
 
 	public void shiftToHighGear() {

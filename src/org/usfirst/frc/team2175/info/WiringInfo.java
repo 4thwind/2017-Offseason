@@ -4,13 +4,17 @@ import java.util.HashMap;
 
 import org.usfirst.frc.team2175.identifiers.WiringKeys;
 
-public class WiringProps {
+public class WiringInfo {
 	private HashMap<String, String> wiringProps = new HashMap<>();
 	private static boolean isC;
 
-	public HashMap<String, String> getWiringMap(boolean isComp) {
+	public WiringInfo(boolean isComp) {
 		isC = isComp;
 
+		fillMapWithInfo();
+	}
+
+	private void fillMapWithInfo() {
 		// put(HashMap, isCompBot, compInfo, pracInfo, id);
 		put("1, false", "1, false", WiringKeys.LEFT_MASTER);
 		put("2, false", "2, false", WiringKeys.LEFT_SLAVEONE);
@@ -27,7 +31,9 @@ public class WiringProps {
 
 		put("11, false", "2, false", WiringKeys.CLIMBER_ONE);
 		put("12, false", "2, false", WiringKeys.CLIMBER_TWO);
+	}
 
+	public HashMap<String, String> getMap() {
 		return wiringProps;
 	}
 

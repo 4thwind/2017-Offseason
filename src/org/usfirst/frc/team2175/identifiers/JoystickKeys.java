@@ -1,11 +1,16 @@
 package org.usfirst.frc.team2175.identifiers;
 
-public class ButtonIDs {
+public class JoystickKeys {
+	public static final String LEFT_JOYSTICK = "joystick.left";
+	public static final String RIGHT_JOYSTICK = "joystick.right";
+	public static final String GAMEPAD = "joystick.gamepad";
+
 	public static final String SHIFT_GEARS = "button.shift";
 
 	public static final String ACTUATE_SHOOTER = "button.shooter.actuate";
-	public static final String SHOOT_OUT = "button.shoot.out";
-	public static final String FEED_OUT = "button.feeder.out";
+	public static final String SHOOT = "button.shoot";
+	public static final String FEED = "button.feeder";
+	public static final String AGITATE = "button.agitator";
 
 	public static final String GEAR_IN = "button.gear.in";
 	public static final String GEAR_OUT = "button.gear.out";
@@ -14,6 +19,9 @@ public class ButtonIDs {
 
 	public static final String GEAR_OUT_DRIVER = "button.gear.out.driver";
 	public static final String GEAR_IN_DRIVER = "button.gear.in.driver";
-	public static final String RAISE_GEAR_DRIVER = "button.gear.toggle.driver";
+	public static final String RAISE_GEAR_DRIVER = "button.gear.raise.driver";
+	public static final String LOWER_GEAR_DRIVER = "button.gear.lower.driver";
 	public static final String GEAR_OUT_SPIN_DRIVER = "button.gear.outandspin.driver";
+
+	public static final String POV_SHOOTER = "270";
 }

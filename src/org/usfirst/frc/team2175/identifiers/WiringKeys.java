@@ -18,4 +18,5 @@ public class WiringKeys {
 	public static final String CLIMBER_ONE = "climber.motor.one";
 	public static final String CLIMBER_TWO = "climber.motor.two";
 
+	public static final String CLIMBER_ACTUATOR = "climber.solenoid";
 }
