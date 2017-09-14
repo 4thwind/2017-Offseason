@@ -31,6 +31,8 @@ public class WiringInfo {
 
 		put("11, false", "2, false", WiringKeys.CLIMBER_ONE);
 		put("12, false", "2, false", WiringKeys.CLIMBER_TWO);
+
+		put("single")
 	}
 
 	public HashMap<String, String> getMap() {
