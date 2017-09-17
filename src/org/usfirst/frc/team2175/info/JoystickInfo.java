@@ -28,12 +28,12 @@ public class JoystickInfo {
 		put("gamepad, 2", JoystickKeys.ACTUATE_GEAR);
 		put("gamepad, 3", JoystickKeys.GEAR_IN);
 		put("gamepad, 4", JoystickKeys.GEAR_OUT);
-		put("gamepad, 6", JoystickKeys.AGITATE);
+		put("gamepad, 6", JoystickKeys.TURRET);
 		put("gamepad, 7", JoystickKeys.SHOOT);
 		put("gamepad, 8", JoystickKeys.FEED);
-		put("gamepad, 10", JoystickKeys.ACTUATE_SHOOTER);
 
 		put("gamepad, 270", JoystickKeys.POV_SHOOTER);
+		put("gamepad, 90", JoystickKeys.POV_AGITATOR);
 
 	}
 

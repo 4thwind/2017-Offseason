@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2175.identifiers;
 
 public class WiringKeys {
-
+	// Motor Keys
 	public static final String LEFT_MASTER = "drivetrain.motor.left.master";
 	public static final String RIGHT_MASTER = "drivetrain.motor.right.master";
 	public static final String LEFT_SLAVEONE = "drivetrain.motor.left.slaveone";
@@ -18,5 +18,14 @@ public class WiringKeys {
 	public static final String CLIMBER_ONE = "climber.motor.one";
 	public static final String CLIMBER_TWO = "climber.motor.two";
 
-	public static final String CLIMBER_ACTUATOR = "climber.solenoid";
+	// Solenoid Keys
+	public static final String GEAR_ACTUATOR = "gearintake.solenoid";
+	public static final String DRIVE_SHIFTERS = "drivetrain.solenoid.driveshifters";
+
+	// Analog Keys
+	public static final String GYRO = "drivetrain.analog.gyro";
+
+	// Digital Keys
+	public static final String LEFT_ENCODER = "drivetrain.digital.encoder.left";
+	public static final String RIGHT_ENCODER = "drivetrain.digital.encoder.right";
 }

@@ -1,70 +1,68 @@
 package org.usfirst.frc.team2175.subsystem;
 
-import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.SolenoidWrapper;
-import org.usfirst.frc.team2175.info.InfoLocator;
+import org.usfirst.frc.team2175.identifiers.BehaviorKeys;
+import org.usfirst.frc.team2175.identifiers.WiringKeys;
 
 import com.ctre.CANTalon;
 
-public class GearIntakeSubsystem extends BaseSubsystem {
-	private InfoLocator locator;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 
-	private CANTalon intakeMotor;
-	private SolenoidWrapper gearIntakeActuator;
+public class GearIntakeSubsystem extends BaseSubsystem {
+	private CANTalon gearMotor;
+	private SolenoidWrapper actuator;
+	private UsbCamera camera;
 
 	private double gearIntakeInSpeed;
 	private double gearIntakeOutSpeed;
 
 	public GearIntakeSubsystem() {
-		locator = ServiceLocator.get(InfoLocator.class);
+		setUpCamera();
 
-		// intakeMotor = motorFromInfo(
-		// locator.getWiringInfo(WiringKeys.GEAR_INTAKE));
-		// gearIntakeActuator = new SolenoidWrapper(
-		// locator.getWiringInfo(WiringKeys.a));
-		//
-		// gearIntakeInSpeed = behaviorProperties.getGearIntakeInSpeed();
-		// gearIntakeOutSpeed = behaviorProperties.getGearIntakeOutSpeed();
+		gearMotor = makeMotor(WiringKeys.GEAR_INTAKE);
+		actuator = new SolenoidWrapper(WiringKeys.GEAR_ACTUATOR);
+
+		gearIntakeInSpeed = getSpeed(BehaviorKeys.GEAR_IN_SPEED);
+		gearIntakeOutSpeed = getSpeed(BehaviorKeys.GEAR_OUT_SPEED);
 	}
 
-	public void runIn() {
-		intakeMotor.set(-gearIntakeInSpeed);
+	private void setUpCamera() {
+		camera = new UsbCamera("GearCam", 0);
+		CameraServer.getInstance().startAutomaticCapture(camera);
+		camera.setExposureManual(3);
 	}
 
-	public void runOut() {
-		intakeMotor.set(gearIntakeOutSpeed);
+	public void spinIn() {
+		gearMotor.set(gearIntakeInSpeed);
 	}
 
-	public void raiseIntake() {
-		gearIntakeActuator.set(false);
-	}
-
-	public void lowerIntake() {
-		gearIntakeActuator.set(true);
+	public void spinOut() {
+		gearMotor.set(gearIntakeOutSpeed);
 	}
 
 	public void stop() {
-		intakeMotor.set(0);
+		gearMotor.set(0);
 	}
 
 	public void toggleActuation() {
-		gearIntakeActuator.set(!gearIntakeActuator.get());
-	}
-
-	public void lower() {
-		gearIntakeActuator.set(true);
+		actuator.set(!actuator.get());
 	}
 
 	public void raise() {
-		gearIntakeActuator.set(false);
+		actuator.set(true);
+	}
+
+	public void lower() {
+		actuator.set(false);
 	}
 
 	public double getMotorCurrent() {
-		return intakeMotor.getOutputCurrent();
+		return gearMotor.getOutputCurrent();
 	}
 
 	public boolean getIsGearIntakeOut() {
-		return gearIntakeActuator.get();
+		return actuator.get();
 	}
 
 	public boolean isGearSolidlyInPlace() {

@@ -4,19 +4,17 @@ import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.command.BaseCommand;
 import org.usfirst.frc.team2175.subsystem.GearIntakeSubsystem;
 
-public class ActuateGearIntakeOutAndSpinCommand extends BaseCommand {
+public class SpinGearIntakeOutCommand extends BaseCommand {
 
-	GearIntakeSubsystem gearIntakeSubsystem;
+	private final GearIntakeSubsystem gearIntakeSubsystem;
 
-	public ActuateGearIntakeOutAndSpinCommand() {
+	public SpinGearIntakeOutCommand() {
 		gearIntakeSubsystem = ServiceLocator.get(GearIntakeSubsystem.class);
 		requires(gearIntakeSubsystem);
 	}
 
 	@Override
 	protected void initialize() {
-		super.initialize();
-		gearIntakeSubsystem.lower();
 		gearIntakeSubsystem.spinOut();
 	}
 

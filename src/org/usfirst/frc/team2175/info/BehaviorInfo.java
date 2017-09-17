@@ -22,8 +22,7 @@ public class BehaviorInfo {
 
 		put(0.6, BehaviorKeys.AGITATOR_SPEED);
 		put(-0.6, BehaviorKeys.AGITATOR_REVERSE_SPEED);
-		put(0.4, BehaviorKeys.FEEDER_SPEED);
-		put(-0.5, BehaviorKeys.FEEDER_REVERSE_SPEED);
+		put(0.3, BehaviorKeys.TURRET_SPEED);
 		put(0.57, BehaviorKeys.SHOOTER_SPEED);
 		put(-0.25, BehaviorKeys.SHOOTER_REVERSE_SPEED);
 

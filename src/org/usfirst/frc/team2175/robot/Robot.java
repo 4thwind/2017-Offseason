@@ -1,6 +1,9 @@
 
 package org.usfirst.frc.team2175.robot;
 
+import org.usfirst.frc.team2175.command.DefaultCommandFactory;
+import org.usfirst.frc.team2175.control.DriverStation;
+import org.usfirst.frc.team2175.control.JoystickEventMapper;
 import org.usfirst.frc.team2175.info.InfoLocator;
 import org.usfirst.frc.team2175.subsystem.SubsystemFactory;
 
@@ -11,23 +14,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		new InfoLocator();
+
 		SubsystemFactory.makeAll();
 
-		// new DriverStation();
+		new DriverStation();
 
-		// DefaultCommandFactory.makeAll();
+		DefaultCommandFactory.makeAll();
 
-		// new JoystickEventMapper();
-	}
-
-	@Override
-	public void disabledInit() {
-
-	}
-
-	@Override
-	public void disabledPeriodic() {
-
+		new JoystickEventMapper();
 	}
 
 	@Override

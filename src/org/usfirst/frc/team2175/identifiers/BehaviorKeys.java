@@ -7,10 +7,9 @@ public class BehaviorKeys {
 	public static final String GEAR_OUT_SPEED = "gearintake.speed.out";
 
 	public static final String AGITATOR_SPEED = "agitator.speed";
-	public static final String FEEDER_SPEED = "feeder.speed";
+	public static final String TURRET_SPEED = "turret.speed";
 	public static final String SHOOTER_SPEED = "shooter.speed";
 	public static final String AGITATOR_REVERSE_SPEED = "agitator.speed.reverse";
-	public static final String FEEDER_REVERSE_SPEED = "feeder.speed.reverse";
 	public static final String SHOOTER_REVERSE_SPEED = "shooter.speed.reverse";
 
 	public static final String GYRO_TURNCORRECTION = "drivetrain.gyro.turncorrection";
