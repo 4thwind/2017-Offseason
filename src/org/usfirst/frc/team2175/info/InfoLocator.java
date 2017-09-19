@@ -15,6 +15,15 @@ public class InfoLocator {
 		ServiceLocator.register(this);
 	}
 
+	private void makeInfoMaps() {
+		BehaviorInfo behaviorInfo = new BehaviorInfo();
+		behaviorInfoMap = behaviorInfo.getMap();
+		JoystickInfo joystickInfo = new JoystickInfo();
+		joystickInfoMap = joystickInfo.getMap();
+		WiringInfo wiringInfo = new WiringInfo(isComp);
+		wiringInfoMap = wiringInfo.getMap();
+	}
+
 	public Double getBehaviorInfo(String id) {
 		return behaviorInfoMap.get(id);
 	}
@@ -25,15 +34,5 @@ public class InfoLocator {
 
 	public String getWiringInfo(String id) {
 		return wiringInfoMap.get(id);
-	}
-
-	private void makeInfoMaps() {
-		BehaviorInfo behaviorInfo = new BehaviorInfo();
-		behaviorInfoMap = behaviorInfo.getMap();
-		JoystickInfo joystickInfo = new JoystickInfo();
-		joystickInfoMap = joystickInfo.getMap();
-		WiringInfo wiringInfo = new WiringInfo(isComp);
-		wiringInfoMap = wiringInfo.getMap();
-
 	}
 }

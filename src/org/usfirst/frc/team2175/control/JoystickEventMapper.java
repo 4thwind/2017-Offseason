@@ -1,8 +1,9 @@
 package org.usfirst.frc.team2175.control;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.command.EmptyCommand;
 import org.usfirst.frc.team2175.command.single.ActuateGearIntakeOutAndSpinCommand;
+import org.usfirst.frc.team2175.command.single.RunAgitatorCommand;
+import org.usfirst.frc.team2175.command.single.RunShooterPIDCommand;
 import org.usfirst.frc.team2175.command.single.ShiftToHighGearCommand;
 import org.usfirst.frc.team2175.command.single.SpinGearIntakeInCommand;
 import org.usfirst.frc.team2175.command.single.SpinGearIntakeOutCommand;
@@ -17,9 +18,9 @@ public class JoystickEventMapper {
 				.whileHeld(new ShiftToHighGearCommand());
 
 		driverStation.getButton(JoystickKeys.SHOOT)
-				.whileHeld(new EmptyCommand());
-		driverStation.getButton(JoystickKeys.FEED)
-				.whileHeld(new EmptyCommand());
+				.toggleWhenPressed(new RunShooterPIDCommand());
+		driverStation.getButton(JoystickKeys.AGITATE)
+				.toggleWhenPressed(new RunAgitatorCommand());
 
 		driverStation.getButton(JoystickKeys.GEAR_IN)
 				.whileHeld(new SpinGearIntakeInCommand());
@@ -29,6 +30,5 @@ public class JoystickEventMapper {
 				.toggleWhenPressed(new ToggleGearIntakeActuationCommand());
 		driverStation.getButton(JoystickKeys.GEAR_OUT_SPIN)
 				.whileHeld(new ActuateGearIntakeOutAndSpinCommand());
-
 	}
 }

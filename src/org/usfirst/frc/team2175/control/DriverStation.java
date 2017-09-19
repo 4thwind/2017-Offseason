@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class DriverStation {
 	private HashMap<String, JoystickButton> buttonMap;
+	private HashMap<String, POVTrigger> povMap;
 	private InfoLocator locator;
+
 	private Joystick leftJoystick;
 	private Joystick rightJoystick;
 	private Joystick gamepad;
@@ -24,7 +26,8 @@ public class DriverStation {
 		gamepad = makeJoystick(JoystickKeys.GAMEPAD);
 
 		buttonMap = new HashMap<>();
-		registerButtonsToMap();
+		povMap = new HashMap<>();
+		registerToMap();
 
 		ServiceLocator.register(this);
 	}
@@ -34,16 +37,19 @@ public class DriverStation {
 		return new Joystick(port);
 	}
 
-	private void registerButtonsToMap() {
+	private void registerToMap() {
 		JoystickKeys jKeys = new JoystickKeys();
 		for (Field field : jKeys.getClass().getDeclaredFields()) {
+			String id = "";
 			try {
-				if (field.toString().contains("button")) {
-					createButtonFromInfo(
-							locator.getJoystickInfo(field.toString()));
-				}
+				id = field.toString();
 			} catch (Exception e) {
 				e.printStackTrace();
+			}
+			if (id.contains("button")) {
+				createButtonFromInfo(locator.getJoystickInfo(id));
+			} else if (id.contains("pov")) {
+				createPOVFromInfo(locator.getJoystickInfo(id));
 			}
 		}
 	}
@@ -55,6 +61,14 @@ public class DriverStation {
 				joystickForName(data[0].trim()),
 				Integer.parseInt(data[1].trim()));
 		buttonMap.put(id, button);
+	}
+
+	private void createPOVFromInfo(String id) {
+		System.out.println(id);
+		String[] data = id.split(",");
+		POVTrigger pov = new POVTrigger(joystickForName(data[0].trim()),
+				Integer.parseInt(data[1].trim()));
+		povMap.put(id, pov);
 	}
 
 	private Joystick joystickForName(final String name) {
@@ -90,7 +104,7 @@ public class DriverStation {
 	}
 
 	public double getClimberSpinSpeed() {
-		return gamepad.getRawAxis(1) * .1;
+		return gamepad.getRawAxis(1);
 	}
 
 	public double getOutput(final double input, final double deadbandSize) {
@@ -101,5 +115,9 @@ public class DriverStation {
 			output = slope * sign * (Math.abs(input) - deadbandSize);
 		}
 		return output;
+	}
+
+	public double getTurretTurnSpeed() {
+		return gamepad.getRawAxis(2);
 	}
 }

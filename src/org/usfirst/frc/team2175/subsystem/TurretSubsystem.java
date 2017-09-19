@@ -7,18 +7,29 @@ import com.ctre.CANTalon;
 
 public class TurretSubsystem extends BaseSubsystem {
 	private CANTalon turret;
-	private double turretSpeed;
+	private double maxTurretSpeed;
+	private double[] offset;
+	private int pos;
 
 	public TurretSubsystem() {
 		turret = makeMotor(WiringKeys.TURRET);
-		turretSpeed = getSpeed(BehaviorKeys.TURRET_SPEED);
+		maxTurretSpeed = getSpeed(BehaviorKeys.TURRET_SPEED);
+		pos = 0;
 	}
 
-	public void turnLeft() {
-		turret.set(turretSpeed);
+	public void turn(double turretTurnSpeed) {
+		turret.set(turretTurnSpeed * maxTurretSpeed);
 	}
 
-	public void turnRight() {
-		turret.set(turretSpeed);
+	public void use(double offset) {
+		this.offset[pos++] = offset;
+	}
+
+	public boolean isTargetVisible() {
+		return offset[pos] == Math.pow(2175.0, 3);
+	}
+
+	public void turnAuto() {
+		turret.set(3 * offset[pos] / 100);
 	}
 }

@@ -28,6 +28,11 @@ public class SmartDashboardLoop extends ControlLoop {
 
 	@Override
 	protected void runTask() {
+		showInfo();
+	}
+
+	private void showInfo() {
+		// TODO Auto-generated method stub
 	}
 
 	public Command getAuton() {

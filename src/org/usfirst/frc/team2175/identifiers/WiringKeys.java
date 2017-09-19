@@ -12,7 +12,7 @@ public class WiringKeys {
 	public static final String GEAR_INTAKE = "gearintake.motor";
 
 	public static final String AGITATOR = "agitator.motor";
-	public static final String TURRET = "feeder.motor";
+	public static final String TURRET = "turret.motor";
 	public static final String SHOOTER = "shooter.motor";
 
 	public static final String CLIMBER_ONE = "climber.motor.one";

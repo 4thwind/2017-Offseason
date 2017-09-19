@@ -90,4 +90,9 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 	public double convertFromInchesToClicks(double inchesToDrive) {
 		return inchesToDrive * 40.21;
 	}
+
+	public void resetSensors() {
+		resetEncoders();
+		resetGyro();
+	}
 }

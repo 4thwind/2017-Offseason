@@ -8,7 +8,7 @@ public class JoystickKeys {
 	public static final String SHIFT_GEARS = "button.shift";
 
 	public static final String SHOOT = "button.shoot";
-	public static final String FEED = "button.feeder";
+	public static final String AGITATE = "button.agitate";
 	public static final String TURRET = "button.turret";
 
 	public static final String GEAR_IN = "button.gear.in";
@@ -22,6 +22,6 @@ public class JoystickKeys {
 	public static final String LOWER_GEAR_DRIVER = "button.gear.lower.driver";
 	public static final String GEAR_OUT_SPIN_DRIVER = "button.gear.outandspin.driver";
 
-	public static final String POV_SHOOTER = "270";
-	public static final String POV_AGITATOR = "90";
+	public static final String POV_SHOOTER = "pov.270";
+	public static final String POV_AGITATOR = "pov.90";
 }
