@@ -26,15 +26,13 @@ public class Wiring_I {
 		put("7, false", "7, false", Wiring_K.AGITATOR);
 		put("8, false", "8, false", Wiring_K.SHOOTER);
 		put("9, false", "9, false", Wiring_K.TURRET);
-
-		put("10, false", "10, false", Wiring_K.GEAR_INTAKE);
+		put("10, false", "10, false", Wiring_K.ELEVATOR);
 
 		put("11, false", "11, false", Wiring_K.CLIMBER);
 
 		put("12, false", "12, false", Wiring_K.BALL_INTAKE);
 
 		put("single, 5", "single, 5", Wiring_K.DRIVE_SHIFTERS);
-		put("double, 4, 3", "double, 4, 3", Wiring_K.GEAR_ACTUATOR);
 
 		put("0", "0", Wiring_K.GYRO);
 

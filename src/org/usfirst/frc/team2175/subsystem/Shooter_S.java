@@ -11,11 +11,13 @@ public class Shooter_S extends Base_S {
 	I_Locator locator;
 	private CANTalon shooter;
 	private CANTalon agitator;
+	private CANTalon elevator;
 
 	public Shooter_S() {
 		locator = ServiceLocator.get(I_Locator.class);
 		shooter = makeMotor(Wiring_K.SHOOTER);
 		agitator = makeMotor(Wiring_K.AGITATOR);
+		elevator = makeMotor(Wiring_K.ELEVATOR);
 
 	}
 
@@ -33,6 +35,14 @@ public class Shooter_S extends Base_S {
 
 	public void stopAgitator() {
 		agitator.set(0);
+	}
+
+	public void runElevator() {
+		elevator.set(locator.getBehaviorInfo(Behavior_K.ELEVATOR_SPEED));
+	}
+
+	public void stopElevator() {
+		elevator.set(0);
 	}
 
 	public boolean isShooterSpinning() {

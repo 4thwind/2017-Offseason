@@ -22,6 +22,7 @@ public class Behavior_I {
 		put(0.3, Behavior_K.TURRET_SPEED);
 		put(0.57, Behavior_K.SHOOTER_SPEED);
 		put(-0.25, Behavior_K.SHOOTER_REVERSE_SPEED);
+		put(0.5, Behavior_K.ELEVATOR_SPEED);
 		put(0.7, Behavior_K.BALL_INTAKE_SPEED);
 		put(-0.7, Behavior_K.BALL_INTAKE_REVERSE_SPEED);
 

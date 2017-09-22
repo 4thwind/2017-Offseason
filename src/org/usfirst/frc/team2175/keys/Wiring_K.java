@@ -9,18 +9,16 @@ public class Wiring_K {
 	public static final String RIGHT_SLAVEONE = "drivetrain.motor.right.slaveone";
 	public static final String RIGHT_SLAVETWO = "drivetrain.motor.right.slavetwo";
 
-	public static final String GEAR_INTAKE = "gearintake.motor";
-
 	public static final String AGITATOR = "agitator.motor";
 	public static final String TURRET = "turret.motor";
 	public static final String SHOOTER = "shooter.motor";
+	public static final String ELEVATOR = "elevator.motor";
 
 	public static final String CLIMBER = "climber.motor";
 
 	public static final String BALL_INTAKE = "ballintake.motor";
 
 	// Solenoid Keys
-	public static final String GEAR_ACTUATOR = "gearintake.solenoid";
 	public static final String DRIVE_SHIFTERS = "drivetrain.solenoid.driveshifters";
 
 	// Analog Keys
