@@ -1,19 +1,19 @@
 package org.usfirst.frc.team2175.subsystem;
 
-import org.usfirst.frc.team2175.identifiers.BehaviorKeys;
-import org.usfirst.frc.team2175.identifiers.WiringKeys;
+import org.usfirst.frc.team2175.keys.Behavior_K;
+import org.usfirst.frc.team2175.keys.Wiring_K;
 
 import com.ctre.CANTalon;
 
-public class TurretSubsystem extends BaseSubsystem {
+public class Turret_S extends Base_S {
 	private CANTalon turret;
 	private double maxTurretSpeed;
 	private double[] offset;
 	private int pos;
 
-	public TurretSubsystem() {
-		turret = makeMotor(WiringKeys.TURRET);
-		maxTurretSpeed = getSpeed(BehaviorKeys.TURRET_SPEED);
+	public Turret_S() {
+		turret = makeMotor(Wiring_K.TURRET);
+		maxTurretSpeed = getSpeed(Behavior_K.TURRET_SPEED);
 		pos = 0;
 	}
 

@@ -3,7 +3,7 @@ package org.usfirst.frc.team2175.command;
 /**
  *
  */
-public class EmptyCommand extends BaseCommand {
+public class Empty_C extends Base_C {
 
     @Override
     protected void initialize() {

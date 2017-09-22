@@ -1,6 +1,6 @@
-package org.usfirst.frc.team2175.identifiers;
+package org.usfirst.frc.team2175.keys;
 
-public class WiringKeys {
+public class Wiring_K {
 	// Motor Keys
 	public static final String LEFT_MASTER = "drivetrain.motor.left.master";
 	public static final String RIGHT_MASTER = "drivetrain.motor.right.master";

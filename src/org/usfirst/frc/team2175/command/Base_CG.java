@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class BaseCommandGroup extends CommandGroup {
+public class Base_CG extends CommandGroup {
 
     protected final Logger log = Logger.getLogger(getClass().getName());
 

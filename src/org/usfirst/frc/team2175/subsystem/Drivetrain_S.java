@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2175.subsystem;
 
 import org.usfirst.frc.team2175.SolenoidWrapper;
-import org.usfirst.frc.team2175.identifiers.WiringKeys;
+import org.usfirst.frc.team2175.keys.Wiring_K;
 
 import com.ctre.CANTalon;
 import com.kauailabs.navx.frc.AHRS;
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
 
-public class DrivetrainSubsystem extends BaseSubsystem {
+public class Drivetrain_S extends Base_S {
 	private CANTalon leftMaster;
 	private CANTalon leftSlaveOne;
 	private CANTalon leftSlaveTwo;
@@ -25,13 +25,13 @@ public class DrivetrainSubsystem extends BaseSubsystem {
 
 	private AHRS navXGyro;
 
-	public DrivetrainSubsystem() {
-		leftMaster = makeMotor(WiringKeys.LEFT_MASTER);
-		leftSlaveOne = makeMotor(WiringKeys.LEFT_SLAVEONE);
-		leftSlaveTwo = makeMotor(WiringKeys.LEFT_SLAVETWO);
-		rightMaster = makeMotor(WiringKeys.RIGHT_MASTER);
-		rightSlaveOne = makeMotor(WiringKeys.RIGHT_SLAVEONE);
-		rightSlaveTwo = makeMotor(WiringKeys.RIGHT_SLAVETWO);
+	public Drivetrain_S() {
+		leftMaster = makeMotor(Wiring_K.LEFT_MASTER);
+		leftSlaveOne = makeMotor(Wiring_K.LEFT_SLAVEONE);
+		leftSlaveTwo = makeMotor(Wiring_K.LEFT_SLAVETWO);
+		rightMaster = makeMotor(Wiring_K.RIGHT_MASTER);
+		rightSlaveOne = makeMotor(Wiring_K.RIGHT_SLAVEONE);
+		rightSlaveTwo = makeMotor(Wiring_K.RIGHT_SLAVETWO);
 
 		setSlave(leftSlaveOne, leftMaster);
 		setSlave(leftSlaveTwo, leftMaster);

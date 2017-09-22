@@ -2,24 +2,24 @@
 package org.usfirst.frc.team2175.robot;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.command.DefaultCommandFactory;
+import org.usfirst.frc.team2175.command.Default_C_Factory;
 import org.usfirst.frc.team2175.control.JoystickEventMapper;
-import org.usfirst.frc.team2175.info.InfoLocator;
-import org.usfirst.frc.team2175.loop.AndroidInfoLoop;
-import org.usfirst.frc.team2175.loop.SchedulerLoop;
-import org.usfirst.frc.team2175.loop.SmartDashboardLoop;
-import org.usfirst.frc.team2175.subsystem.DrivetrainSubsystem;
-import org.usfirst.frc.team2175.subsystem.SubsystemFactory;
+import org.usfirst.frc.team2175.info.I_Locator;
+import org.usfirst.frc.team2175.loop.AndroidInfo_L;
+import org.usfirst.frc.team2175.loop.Scheduler_L;
+import org.usfirst.frc.team2175.loop.SmartDashboard_L;
+import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
+import org.usfirst.frc.team2175.subsystem.S_Factory;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
-	SchedulerLoop schedulerLoop = new SchedulerLoop();
-	SmartDashboardLoop smartDashboardLoop;
-	AndroidInfoLoop androidInfoLoop;
-	DrivetrainSubsystem drivetrainSubsystem;
+	Scheduler_L schedulerLoop = new Scheduler_L();
+	SmartDashboard_L smartDashboardLoop;
+	AndroidInfo_L androidInfoLoop;
+	Drivetrain_S drivetrainSubsystem;
 	Command auton;
 
 	@Override
@@ -29,20 +29,20 @@ public class Robot extends IterativeRobot {
 	}
 
 	private void makeSystems() {
-		new InfoLocator();
-		SubsystemFactory.makeAll();
+		new I_Locator();
+		S_Factory.makeAll();
 
-		DefaultCommandFactory.makeAll();
+		Default_C_Factory.makeAll();
 
 		new JoystickEventMapper();
-		drivetrainSubsystem = ServiceLocator.get(DrivetrainSubsystem.class);
+		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
 	}
 
 	private void makeLoops() {
 		schedulerLoop.start();
-		smartDashboardLoop = new SmartDashboardLoop();
+		smartDashboardLoop = new SmartDashboard_L();
 		smartDashboardLoop.start();
-		androidInfoLoop = new AndroidInfoLoop();
+		androidInfoLoop = new AndroidInfo_L();
 		androidInfoLoop.start();
 	}
 

@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class SmartDashboardLoop extends ControlLoop {
+public class SmartDashboard_L extends Control_L {
 
 	private SendableChooser<Command> autonSelector;
 
-	public SmartDashboardLoop() {
+	public SmartDashboard_L() {
 		autonSelector = new SendableChooser<>();
 
 		makeAutonSelector();

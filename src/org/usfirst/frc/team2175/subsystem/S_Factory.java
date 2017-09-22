@@ -2,12 +2,12 @@ package org.usfirst.frc.team2175.subsystem;
 
 import org.usfirst.frc.team2175.control.DriverStation;
 
-public class SubsystemFactory {
+public class S_Factory {
 	public static void makeAll() {
-		new DrivetrainSubsystem();
-		new ClimberSubsystem();
+		new Drivetrain_S();
+		new Climber_S();
 		new DriverStation();
-		new ShooterSubsystem();
-		new TurretSubsystem();
+		new Shooter_S();
+		new Turret_S();
 	}
 }

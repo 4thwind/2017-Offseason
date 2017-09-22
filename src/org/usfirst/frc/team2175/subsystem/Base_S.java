@@ -1,17 +1,17 @@
 package org.usfirst.frc.team2175.subsystem;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.info.InfoLocator;
+import org.usfirst.frc.team2175.info.I_Locator;
 
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class BaseSubsystem extends Subsystem {
-	InfoLocator infoLocator;
-	public BaseSubsystem() {
-		infoLocator = ServiceLocator.get(InfoLocator.class);
+public class Base_S extends Subsystem {
+	I_Locator infoLocator;
+	public Base_S() {
+		infoLocator = ServiceLocator.get(I_Locator.class);
 
 		ServiceLocator.register(this);
 	}

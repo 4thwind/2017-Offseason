@@ -4,8 +4,8 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.identifiers.JoystickKeys;
-import org.usfirst.frc.team2175.info.InfoLocator;
+import org.usfirst.frc.team2175.info.I_Locator;
+import org.usfirst.frc.team2175.keys.Joystick_K;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -13,17 +13,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class DriverStation {
 	private HashMap<String, JoystickButton> buttonMap;
 	private HashMap<String, POVTrigger> povMap;
-	private InfoLocator locator;
+	private I_Locator locator;
 
 	private Joystick leftJoystick;
 	private Joystick rightJoystick;
 	private Joystick gamepad;
 
 	public DriverStation() {
-		locator = ServiceLocator.get(InfoLocator.class);
-		leftJoystick = makeJoystick(JoystickKeys.LEFT_JOYSTICK);
-		rightJoystick = makeJoystick(JoystickKeys.RIGHT_JOYSTICK);
-		gamepad = makeJoystick(JoystickKeys.GAMEPAD);
+		locator = ServiceLocator.get(I_Locator.class);
+		leftJoystick = makeJoystick(Joystick_K.LEFT_JOYSTICK);
+		rightJoystick = makeJoystick(Joystick_K.RIGHT_JOYSTICK);
+		gamepad = makeJoystick(Joystick_K.GAMEPAD);
 
 		buttonMap = new HashMap<>();
 		povMap = new HashMap<>();
@@ -38,7 +38,7 @@ public class DriverStation {
 	}
 
 	private void registerToMap() {
-		JoystickKeys jKeys = new JoystickKeys();
+		Joystick_K jKeys = new Joystick_K();
 		for (Field field : jKeys.getClass().getDeclaredFields()) {
 			String id = "";
 			try {

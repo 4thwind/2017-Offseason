@@ -1,16 +1,16 @@
 package org.usfirst.frc.team2175.command.single;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.command.BaseCommand;
+import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.control.DriverStation;
-import org.usfirst.frc.team2175.subsystem.DrivetrainSubsystem;
+import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 
-public class ArcadeDriveWithJoysticksCommand extends BaseCommand {
-	DrivetrainSubsystem drivetrainSubsystem;
+public class ArcadeDriveWithJoysticks_C extends Base_C {
+	Drivetrain_S drivetrainSubsystem;
 	DriverStation driverStation;
 
-	public ArcadeDriveWithJoysticksCommand() {
-		drivetrainSubsystem = ServiceLocator.get(DrivetrainSubsystem.class);
+	public ArcadeDriveWithJoysticks_C() {
+		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
 		driverStation = ServiceLocator.get(DriverStation.class);
 	}
 	@Override

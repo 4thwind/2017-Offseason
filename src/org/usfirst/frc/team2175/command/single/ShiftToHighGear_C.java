@@ -1,14 +1,14 @@
 package org.usfirst.frc.team2175.command.single;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.command.BaseCommand;
-import org.usfirst.frc.team2175.subsystem.DrivetrainSubsystem;
+import org.usfirst.frc.team2175.command.Base_C;
+import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 
-public class ShiftToHighGearCommand extends BaseCommand {
-	private DrivetrainSubsystem drivetrainSubsystem;
+public class ShiftToHighGear_C extends Base_C {
+	private Drivetrain_S drivetrainSubsystem;
 
-	public ShiftToHighGearCommand() {
-		drivetrainSubsystem = ServiceLocator.get(DrivetrainSubsystem.class);
+	public ShiftToHighGear_C() {
+		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
 	}
 
 	@Override

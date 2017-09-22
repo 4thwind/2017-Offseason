@@ -1,6 +1,6 @@
-package org.usfirst.frc.team2175.identifiers;
+package org.usfirst.frc.team2175.keys;
 
-public class BehaviorKeys {
+public class Behavior_K {
 	public static final String CLIMBER_MAX_SPEED = "climber.speed.max";
 
 	public static final String AGITATOR_SPEED = "agitator.speed";

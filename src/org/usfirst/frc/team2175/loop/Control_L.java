@@ -3,11 +3,11 @@ package org.usfirst.frc.team2175.loop;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public abstract class ControlLoop {
+public abstract class Control_L {
 
     private final Timer loopTimer;
 
-    public ControlLoop() {
+    public Control_L() {
         this.loopTimer = new Timer();
     }
 

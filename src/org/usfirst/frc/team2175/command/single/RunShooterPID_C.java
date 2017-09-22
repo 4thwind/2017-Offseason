@@ -1,15 +1,15 @@
 package org.usfirst.frc.team2175.command.single;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.subsystem.ShooterSubsystem;
+import org.usfirst.frc.team2175.subsystem.Shooter_S;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RunShooterPIDCommand extends Command {
-	ShooterSubsystem shooterSubsystem;
+public class RunShooterPID_C extends Command {
+	Shooter_S shooterSubsystem;
 
-	public RunShooterPIDCommand() {
-		shooterSubsystem = ServiceLocator.get(ShooterSubsystem.class);
+	public RunShooterPID_C() {
+		shooterSubsystem = ServiceLocator.get(Shooter_S.class);
 	}
 
 	@Override

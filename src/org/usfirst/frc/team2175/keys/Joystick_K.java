@@ -1,6 +1,6 @@
-package org.usfirst.frc.team2175.identifiers;
+package org.usfirst.frc.team2175.keys;
 
-public class JoystickKeys {
+public class Joystick_K {
 	public static final String LEFT_JOYSTICK = "joystick.left";
 	public static final String RIGHT_JOYSTICK = "joystick.right";
 	public static final String GAMEPAD = "joystick.gamepad";

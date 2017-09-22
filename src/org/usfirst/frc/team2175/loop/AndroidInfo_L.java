@@ -1,13 +1,13 @@
 package org.usfirst.frc.team2175.loop;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.subsystem.TurretSubsystem;
+import org.usfirst.frc.team2175.subsystem.Turret_S;
 
-public class AndroidInfoLoop extends ControlLoop {
-	TurretSubsystem turretSubsystem;
+public class AndroidInfo_L extends Control_L {
+	Turret_S turretSubsystem;
 
-	public AndroidInfoLoop() {
-		turretSubsystem = ServiceLocator.get(TurretSubsystem.class);
+	public AndroidInfo_L() {
+		turretSubsystem = ServiceLocator.get(Turret_S.class);
 		ServiceLocator.register(this);
 	}
 

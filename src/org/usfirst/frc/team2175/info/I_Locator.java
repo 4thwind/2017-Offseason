@@ -4,23 +4,23 @@ import java.util.HashMap;
 
 import org.usfirst.frc.team2175.ServiceLocator;
 
-public class InfoLocator {
+public class I_Locator {
 	private HashMap<String, String> wiringInfoMap;
 	private HashMap<String, String> joystickInfoMap;
 	private HashMap<String, Double> behaviorInfoMap;
 	private boolean isComp = true;
 
-	public InfoLocator() {
+	public I_Locator() {
 		makeInfoMaps();
 		ServiceLocator.register(this);
 	}
 
 	private void makeInfoMaps() {
-		BehaviorInfo behaviorInfo = new BehaviorInfo();
+		Behavior_I behaviorInfo = new Behavior_I();
 		behaviorInfoMap = behaviorInfo.getMap();
-		JoystickInfo joystickInfo = new JoystickInfo();
+		Joystick_I joystickInfo = new Joystick_I();
 		joystickInfoMap = joystickInfo.getMap();
-		WiringInfo wiringInfo = new WiringInfo(isComp);
+		Wiring_I wiringInfo = new Wiring_I(isComp);
 		wiringInfoMap = wiringInfo.getMap();
 	}
 
