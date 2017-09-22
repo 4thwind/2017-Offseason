@@ -17,16 +17,7 @@ public class JoystickInfo {
 		put("2", JoystickKeys.GAMEPAD);
 		// put(info, id);
 		put("left, 1", JoystickKeys.SHIFT_GEARS);
-		put("left, 2", JoystickKeys.GEAR_IN_DRIVER);
-		put("left, 4", JoystickKeys.LOWER_GEAR_DRIVER);
-		put("left, 5", JoystickKeys.RAISE_GEAR_DRIVER);
 
-		put("right, 1", JoystickKeys.GEAR_OUT_SPIN_DRIVER);
-
-		put("gamepad, 1", JoystickKeys.GEAR_OUT_SPIN);
-		put("gamepad, 2", JoystickKeys.ACTUATE_GEAR);
-		put("gamepad, 3", JoystickKeys.GEAR_IN);
-		put("gamepad, 4", JoystickKeys.GEAR_OUT);
 		put("gamepad, 6", JoystickKeys.TURRET);
 		put("gamepad, 7", JoystickKeys.SHOOT);
 		put("gamepad, 8", JoystickKeys.AGITATE);

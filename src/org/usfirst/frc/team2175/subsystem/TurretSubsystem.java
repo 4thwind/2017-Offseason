@@ -25,10 +25,6 @@ public class TurretSubsystem extends BaseSubsystem {
 		this.offset[pos++] = offset;
 	}
 
-	public boolean isTargetVisible() {
-		return offset[pos] == Math.pow(2175.0, 3);
-	}
-
 	public void turnAuto() {
 		turret.set(3 * offset[pos] / 100);
 	}

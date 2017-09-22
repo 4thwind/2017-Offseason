@@ -4,19 +4,14 @@ import org.usfirst.frc.team2175.identifiers.BehaviorKeys;
 import org.usfirst.frc.team2175.identifiers.WiringKeys;
 
 import com.ctre.CANTalon;
-import com.ctre.CANTalon.TalonControlMode;
 
 public class ClimberSubsystem extends BaseSubsystem {
 	private CANTalon motorOne;
-	private CANTalon motorTwo;
 	private double maxClimberSpeed;
 
 	public ClimberSubsystem() {
-		motorOne = makeMotor(WiringKeys.CLIMBER_ONE);
-		motorTwo = makeMotor(WiringKeys.CLIMBER_TWO);
+		motorOne = makeMotor(WiringKeys.CLIMBER);
 
-		motorTwo.changeControlMode(TalonControlMode.Follower);
-		motorTwo.set(motorOne.getDeviceID());
 		maxClimberSpeed = getSpeed(BehaviorKeys.CLIMBER_MAX_SPEED);
 	}
 
