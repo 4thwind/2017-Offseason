@@ -29,8 +29,9 @@ public class WiringInfo {
 
 		put("10, false", "10, false", WiringKeys.GEAR_INTAKE);
 
-		put("11, false", "11, false", WiringKeys.CLIMBER_ONE);
-		put("12, false", "12, false", WiringKeys.CLIMBER_TWO);
+		put("11, false", "11, false", WiringKeys.CLIMBER);
+
+		put("12, false", "12, false", WiringKeys.BALL_INTAKE);
 
 		put("single, 5", "single, 5", WiringKeys.DRIVE_SHIFTERS);
 		put("double, 4, 3", "double, 4, 3", WiringKeys.GEAR_ACTUATOR);

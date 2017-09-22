@@ -15,8 +15,9 @@ public class WiringKeys {
 	public static final String TURRET = "turret.motor";
 	public static final String SHOOTER = "shooter.motor";
 
-	public static final String CLIMBER_ONE = "climber.motor.one";
-	public static final String CLIMBER_TWO = "climber.motor.two";
+	public static final String CLIMBER = "climber.motor";
+
+	public static final String BALL_INTAKE = "ballintake.motor";
 
 	// Solenoid Keys
 	public static final String GEAR_ACTUATOR = "gearintake.solenoid";

@@ -17,14 +17,13 @@ public class BehaviorInfo {
 		// put(info, id);
 		put(1.0, BehaviorKeys.CLIMBER_MAX_SPEED);
 
-		put(0.7, BehaviorKeys.GEAR_IN_SPEED);
-		put(0.5, BehaviorKeys.GEAR_OUT_SPEED);
-
 		put(0.6, BehaviorKeys.AGITATOR_SPEED);
 		put(-0.6, BehaviorKeys.AGITATOR_REVERSE_SPEED);
 		put(0.3, BehaviorKeys.TURRET_SPEED);
 		put(0.57, BehaviorKeys.SHOOTER_SPEED);
 		put(-0.25, BehaviorKeys.SHOOTER_REVERSE_SPEED);
+		put(0.7, BehaviorKeys.BALL_INTAKE_SPEED);
+		put(-0.7, BehaviorKeys.BALL_INTAKE_REVERSE_SPEED);
 
 		put(45.0, BehaviorKeys.GYRO_TURNCORRECTION);
 		put(20.0, BehaviorKeys.THRESHOLD_CURRENT);

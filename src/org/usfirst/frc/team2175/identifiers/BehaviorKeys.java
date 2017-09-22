@@ -3,14 +3,13 @@ package org.usfirst.frc.team2175.identifiers;
 public class BehaviorKeys {
 	public static final String CLIMBER_MAX_SPEED = "climber.speed.max";
 
-	public static final String GEAR_IN_SPEED = "gearintake.speed.in";
-	public static final String GEAR_OUT_SPEED = "gearintake.speed.out";
-
 	public static final String AGITATOR_SPEED = "agitator.speed";
 	public static final String TURRET_SPEED = "turret.speed";
 	public static final String SHOOTER_SPEED = "shooter.speed";
 	public static final String AGITATOR_REVERSE_SPEED = "agitator.speed.reverse";
 	public static final String SHOOTER_REVERSE_SPEED = "shooter.speed.reverse";
+	public static final String BALL_INTAKE_SPEED = "ballintake.speed";
+	public static final String BALL_INTAKE_REVERSE_SPEED = "ballintake.speed.reverse";
 
 	public static final String GYRO_TURNCORRECTION = "drivetrain.gyro.turncorrection";
 	public static final String THRESHOLD_CURRENT = "drivetrain.threshold.current";
