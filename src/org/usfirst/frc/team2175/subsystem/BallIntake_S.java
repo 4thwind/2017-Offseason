@@ -23,4 +23,8 @@ public class BallIntake_S extends Base_S {
 	public void runIntakeOut() {
 		ballIntake.set(intakeReverseSpeed);
 	}
+
+	public void stopIntake() {
+		ballIntake.set(0);
+	}
 }
