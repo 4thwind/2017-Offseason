@@ -16,15 +16,15 @@ public class BallIntake_S extends Base_S {
 		intakeReverseSpeed = getSpeed(Behavior_K.BALL_INTAKE_REVERSE_SPEED);
 	}
 
-	public void runIntakeIn() {
+	public void runIn() {
 		ballIntake.set(intakeSpeed);
 	}
 
-	public void runIntakeOut() {
+	public void runOut() {
 		ballIntake.set(intakeReverseSpeed);
 	}
 
-	public void stopIntake() {
+	public void stop() {
 		ballIntake.set(0);
 	}
 }
