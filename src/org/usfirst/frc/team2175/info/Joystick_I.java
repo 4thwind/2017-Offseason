@@ -18,9 +18,10 @@ public class Joystick_I {
 		// put(info, id);
 		put("left, 1", Joystick_K.SHIFT_GEARS);
 
-		put("gamepad, 6", Joystick_K.TURRET);
+		put("gamepad, 6", Joystick_K.TOGGLE_CONTROL);
 		put("gamepad, 7", Joystick_K.SHOOT);
 		put("gamepad, 8", Joystick_K.AGITATE);
+		put("gamepad, 9", Joystick_K.BALL_INTAKE);
 
 		put("gamepad, 270", Joystick_K.POV_SHOOTER);
 		put("gamepad, 90", Joystick_K.POV_AGITATOR);

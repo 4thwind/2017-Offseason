@@ -13,6 +13,7 @@ public class RunAgitator_C extends Base_C {
 
 	@Override
 	protected void initialize() {
+		shooter_S.runFeeder();
 		shooter_S.runAgitator();
 	}
 
@@ -24,6 +25,7 @@ public class RunAgitator_C extends Base_C {
 	@Override
 	protected void end() {
 		shooter_S.stopAgitator();
+		shooter_S.runFeeder();
 	}
 
 }
