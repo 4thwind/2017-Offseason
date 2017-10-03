@@ -8,7 +8,7 @@ public class Behavior_K {
 	public static final String SHOOTER_SPEED = "shooter.speed";
 	public static final String AGITATOR_REVERSE_SPEED = "agitator.speed.reverse";
 	public static final String SHOOTER_REVERSE_SPEED = "shooter.speed.reverse";
-	public static final String ELEVATOR_SPEED = "elevator.speed";
+	public static final String FEEDER_SPEED = "feeder.speed";
 
 	public static final String BALL_INTAKE_SPEED = "ballintake.speed";
 	public static final String BALL_INTAKE_REVERSE_SPEED = "ballintake.speed.reverse";

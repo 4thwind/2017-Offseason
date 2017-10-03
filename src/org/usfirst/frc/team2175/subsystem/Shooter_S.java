@@ -1,24 +1,25 @@
 package org.usfirst.frc.team2175.subsystem;
 
-import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.info.I_Locator;
 import org.usfirst.frc.team2175.keys.Behavior_K;
 import org.usfirst.frc.team2175.keys.Wiring_K;
 
 import com.ctre.CANTalon;
 
 public class Shooter_S extends Base_S {
-	I_Locator locator;
 	private CANTalon shooter;
 	private CANTalon agitator;
-	private CANTalon elevator;
+	private CANTalon feeder;
+	private double shooterSpeed;
+	private double agitatorSpeed;
+	private double feederSpeed;
 
 	public Shooter_S() {
-		locator = ServiceLocator.get(I_Locator.class);
 		shooter = makeMotor(Wiring_K.SHOOTER);
 		agitator = makeMotor(Wiring_K.AGITATOR);
-		elevator = makeMotor(Wiring_K.ELEVATOR);
-
+		feeder = makeMotor(Wiring_K.ELEVATOR);
+		shooterSpeed = getSpeed(Behavior_K.SHOOTER_SPEED);
+		agitatorSpeed = getSpeed(Behavior_K.AGITATOR_SPEED);
+		feederSpeed = getSpeed(Behavior_K.FEEDER_SPEED);
 	}
 
 	public void runShooterPID() {
@@ -30,19 +31,19 @@ public class Shooter_S extends Base_S {
 	}
 
 	public void runAgitator() {
-		agitator.set(locator.getBehaviorInfo(Behavior_K.AGITATOR_SPEED));
+		agitator.set(agitatorSpeed);
 	}
 
 	public void stopAgitator() {
 		agitator.set(0);
 	}
 
-	public void runElevator() {
-		elevator.set(locator.getBehaviorInfo(Behavior_K.ELEVATOR_SPEED));
+	public void runFeeder() {
+		feeder.set(feederSpeed);
 	}
 
-	public void stopElevator() {
-		elevator.set(0);
+	public void stopFeeder() {
+		feeder.set(0);
 	}
 
 	public boolean isShooterSpinning() {
