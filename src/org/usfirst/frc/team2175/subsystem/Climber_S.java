@@ -16,12 +16,8 @@ public class Climber_S extends Base_S {
 	}
 
 	public void setClimberSpeed(double speed) {
-		double correctSpeed = (speed > 0) ? speed : 0;
+		double correctSpeed = (speed > 0) ? speed * maxClimberSpeed : 0;
 		motorOne.set(correctSpeed);
-	}
-
-	public double getMaxClimberSpeed() {
-		return maxClimberSpeed;
 	}
 
 	public double getOutputCurrent() {

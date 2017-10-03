@@ -1,11 +1,10 @@
 package org.usfirst.frc.team2175.command.single;
 
 import org.usfirst.frc.team2175.ServiceLocator;
+import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.subsystem.Shooter_S;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-public class RunAgitator_C extends Command {
+public class RunAgitator_C extends Base_C {
 	Shooter_S shooterSubsystem;
 
 	public RunAgitator_C() {
