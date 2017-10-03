@@ -9,5 +9,6 @@ public class S_Factory {
 		new DriverStation();
 		new Shooter_S();
 		new Turret_S();
+		new BallIntake_S();
 	}
 }
