@@ -5,15 +5,21 @@ import org.usfirst.frc.team2175.keys.Wiring_K;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 public class Turret_S extends Base_S {
-	private CANTalon turret;
 	private double maxTurretSpeed;
+	private DigitalInput inputOne;
+	private DigitalInput inputTwo;
+	private CANTalon turret;
 	private double[] offset;
+	private boolean isAuto;
 	private int pos;
 
 	public Turret_S() {
 		turret = makeMotor(Wiring_K.TURRET);
 		maxTurretSpeed = getSpeed(Behavior_K.TURRET_SPEED);
+		isAuto = true;
 		pos = 0;
 	}
 
@@ -27,5 +33,21 @@ public class Turret_S extends Base_S {
 
 	public void turnAuto() {
 		turret.set(3 * offset[pos] / 100);
+	}
+
+	public boolean isAutoAim() {
+		return isAuto;
+	}
+
+	public void toggleAuto() {
+		isAuto = !isAuto;
+	}
+
+	public void turnManual(double speed) {
+		turret.set(speed);
+	}
+
+	public void stop() {
+		turret.set(0);
 	}
 }
