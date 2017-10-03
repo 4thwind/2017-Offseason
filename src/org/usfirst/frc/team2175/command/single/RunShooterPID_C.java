@@ -6,15 +6,15 @@ import org.usfirst.frc.team2175.subsystem.Shooter_S;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class RunShooterPID_C extends Command {
-	Shooter_S shooterSubsystem;
+	Shooter_S shooter_S;
 
 	public RunShooterPID_C() {
-		shooterSubsystem = ServiceLocator.get(Shooter_S.class);
+		shooter_S = ServiceLocator.get(Shooter_S.class);
 	}
 
 	@Override
 	public void initialize() {
-		shooterSubsystem.runShooterPID();
+		shooter_S.runShooterPID();
 	}
 
 	@Override
@@ -24,6 +24,6 @@ public class RunShooterPID_C extends Command {
 
 	@Override
 	protected void end() {
-		shooterSubsystem.stopShooter();
+		shooter_S.stopShooter();
 	}
 }

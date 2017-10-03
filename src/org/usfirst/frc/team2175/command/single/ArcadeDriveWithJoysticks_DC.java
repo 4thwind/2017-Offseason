@@ -6,11 +6,11 @@ import org.usfirst.frc.team2175.control.DriverStation;
 import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 
 public class ArcadeDriveWithJoysticks_DC extends Base_C {
-	Drivetrain_S drivetrainSubsystem;
+	Drivetrain_S drivetrain_S;
 	DriverStation driverStation;
 
 	public ArcadeDriveWithJoysticks_DC() {
-		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
+		drivetrain_S = ServiceLocator.get(Drivetrain_S.class);
 		driverStation = ServiceLocator.get(DriverStation.class);
 	}
 
@@ -18,7 +18,7 @@ public class ArcadeDriveWithJoysticks_DC extends Base_C {
 	protected void execute() {
 		double moveValue = driverStation.getMoveValue();
 		double turnValue = driverStation.getTurnValue();
-		drivetrainSubsystem.arcadeDrive(moveValue, turnValue);
+		drivetrain_S.arcadeDrive(moveValue, turnValue);
 	}
 
 	@Override
@@ -28,6 +28,6 @@ public class ArcadeDriveWithJoysticks_DC extends Base_C {
 
 	@Override
 	protected void end() {
-		drivetrainSubsystem.stopAllMotors();
+		drivetrain_S.stopAllMotors();
 	}
 }

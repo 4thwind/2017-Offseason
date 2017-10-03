@@ -5,15 +5,15 @@ import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 
 public class ShiftToHighGear_C extends Base_C {
-	private Drivetrain_S drivetrainSubsystem;
+	private Drivetrain_S drivetrain_S;
 
 	public ShiftToHighGear_C() {
-		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
+		drivetrain_S = ServiceLocator.get(Drivetrain_S.class);
 	}
 
 	@Override
 	protected void initialize() {
-		drivetrainSubsystem.shiftToHighGear();
+		drivetrain_S.shiftToHighGear();
 	}
 
 	@Override
@@ -23,6 +23,6 @@ public class ShiftToHighGear_C extends Base_C {
 
 	@Override
 	protected void end() {
-		drivetrainSubsystem.shiftToLowGear();
+		drivetrain_S.shiftToLowGear();
 	}
 }
