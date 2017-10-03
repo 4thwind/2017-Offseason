@@ -5,14 +5,15 @@ import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.control.DriverStation;
 import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 
-public class ArcadeDriveWithJoysticks_C extends Base_C {
+public class ArcadeDriveWithJoysticks_DC extends Base_C {
 	Drivetrain_S drivetrainSubsystem;
 	DriverStation driverStation;
 
-	public ArcadeDriveWithJoysticks_C() {
+	public ArcadeDriveWithJoysticks_DC() {
 		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
 		driverStation = ServiceLocator.get(DriverStation.class);
 	}
+
 	@Override
 	protected void execute() {
 		double moveValue = driverStation.getMoveValue();
