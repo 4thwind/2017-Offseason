@@ -6,7 +6,8 @@ import org.usfirst.frc.team2175.keys.Wiring_K;
 import com.ctre.CANTalon;
 
 public class Shooter_S extends Base_S {
-	private CANTalon shooter;
+	private CANTalon shooterMaster;
+	private CANTalon shooterSlave;
 	private CANTalon agitator;
 	private CANTalon feeder;
 	private double shooterSpeed;
@@ -14,20 +15,23 @@ public class Shooter_S extends Base_S {
 	private double feederSpeed;
 
 	public Shooter_S() {
-		shooter = makeMotor(Wiring_K.SHOOTER);
+		shooterMaster = makeMotor(Wiring_K.SHOOTER_MASTER);
+		shooterSlave = makeMotor(Wiring_K.SHOOTER_SLAVE);
 		agitator = makeMotor(Wiring_K.AGITATOR);
 		feeder = makeMotor(Wiring_K.ELEVATOR);
 		shooterSpeed = getSpeed(Behavior_K.SHOOTER_SPEED);
 		agitatorSpeed = getSpeed(Behavior_K.AGITATOR_SPEED);
 		feederSpeed = getSpeed(Behavior_K.FEEDER_SPEED);
+
+		setSlave(shooterSlave, shooterMaster);
 	}
 
 	public void runShooterPID() {
-		shooter.set(3600);
+		shooterMaster.set(1800);
 	}
 
 	public void stopShooter() {
-		shooter.set(0);
+		shooterMaster.set(0);
 	}
 
 	public void runAgitator() {
@@ -47,6 +51,6 @@ public class Shooter_S extends Base_S {
 	}
 
 	public boolean isShooterSpinning() {
-		return Math.abs(shooter.get()) > 0;
+		return Math.abs(shooterMaster.get()) > 0;
 	}
 }

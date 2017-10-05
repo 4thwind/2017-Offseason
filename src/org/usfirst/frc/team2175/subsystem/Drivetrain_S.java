@@ -1,14 +1,14 @@
 package org.usfirst.frc.team2175.subsystem;
 
-import org.usfirst.frc.team2175.SolenoidWrapper;
 import org.usfirst.frc.team2175.keys.Wiring_K;
 
 import com.ctre.CANTalon;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SPI;
 
 public class Drivetrain_S extends Base_S {
 	private CANTalon leftMaster;
@@ -21,7 +21,7 @@ public class Drivetrain_S extends Base_S {
 	private Encoder encoder;
 	private RobotDrive robotDrive;
 
-	private SolenoidWrapper driveShifters;
+	private DoubleSolenoid driveShifters;
 
 	private AHRS navXGyro;
 
@@ -33,6 +33,8 @@ public class Drivetrain_S extends Base_S {
 		rightSlaveOne = makeMotor(Wiring_K.RIGHT_SLAVEONE);
 		rightSlaveTwo = makeMotor(Wiring_K.RIGHT_SLAVETWO);
 
+		driveShifters = new DoubleSolenoid(1, 2);
+
 		setSlave(leftSlaveOne, leftMaster);
 		setSlave(leftSlaveTwo, leftMaster);
 		setSlave(rightSlaveOne, rightMaster);
@@ -40,22 +42,17 @@ public class Drivetrain_S extends Base_S {
 
 		robotDrive = new RobotDrive(leftMaster, rightMaster);
 
-		navXGyro = new AHRS(SPI.Port.kMXP);
-		encoder = new Encoder(0, 0);
+		// navXGyro = new AHRS(SPI.Port.kMXP);
+		encoder = new Encoder(0, 1);
 		encoder.setDistancePerPulse(1);
 	}
 
-	private void setSlave(final CANTalon slave, final CANTalon master) {
-		slave.changeControlMode(CANTalon.TalonControlMode.Follower);
-		slave.set(master.getDeviceID());
-	}
-
 	public void shiftToHighGear() {
-		driveShifters.set(true);
+		driveShifters.set(Value.kForward);
 	}
 
 	public void shiftToLowGear() {
-		driveShifters.set(false);
+		driveShifters.set(Value.kReverse);
 	}
 
 	public void stopAllMotors() {

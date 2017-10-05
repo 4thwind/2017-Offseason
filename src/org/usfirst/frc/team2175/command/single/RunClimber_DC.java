@@ -12,6 +12,8 @@ public class RunClimber_DC extends Base_C {
 	public RunClimber_DC() {
 		climber_S = ServiceLocator.get(Climber_S.class);
 		driverStation = ServiceLocator.get(DriverStation.class);
+
+		requires(climber_S);
 	}
 
 	@Override

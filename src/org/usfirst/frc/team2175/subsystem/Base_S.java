@@ -27,6 +27,11 @@ public class Base_S extends Subsystem {
 		return infoLocator.getBehaviorInfo(id);
 	}
 
+	protected void setSlave(final CANTalon slave, final CANTalon master) {
+		slave.changeControlMode(CANTalon.TalonControlMode.Follower);
+		slave.set(master.getDeviceID());
+	}
+
 	@Override
 	public void setDefaultCommand(final Command command) {
 		super.setDefaultCommand(command);

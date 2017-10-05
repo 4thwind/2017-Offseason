@@ -12,14 +12,18 @@ public class TurnTurret_DC extends Base_C {
 	public TurnTurret_DC() {
 		turret_S = ServiceLocator.get(Turret_S.class);
 		driverStation = ServiceLocator.get(DriverStation.class);
+
+		requires(turret_S);
 	}
 
 	@Override
 	protected void execute() {
-		if (turret_S.isAutoAim()) {
-			turret_S.turnAuto();
-		} else {
-			turret_S.turnManual(driverStation.getTurretTurnSpeed());
+		if (turret_S.isSensorTriggered()) {
+			if (turret_S.isAutoAim()) {
+				turret_S.turnAuto();
+			} else {
+				turret_S.turnManual(driverStation.getTurretTurnSpeed());
+			}
 		}
 	}
 

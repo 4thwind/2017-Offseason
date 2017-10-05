@@ -12,6 +12,8 @@ public class ArcadeDriveWithJoysticks_DC extends Base_C {
 	public ArcadeDriveWithJoysticks_DC() {
 		drivetrain_S = ServiceLocator.get(Drivetrain_S.class);
 		driverStation = ServiceLocator.get(DriverStation.class);
+
+		requires(drivetrain_S);
 	}
 
 	@Override

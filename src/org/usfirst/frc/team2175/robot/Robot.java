@@ -34,7 +34,6 @@ public class Robot extends IterativeRobot {
 
 		Default_C_Factory.makeAll();
 
-		new JoystickEventMapper();
 		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
 	}
 
@@ -59,6 +58,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		new JoystickEventMapper();
 		if (auton != null && auton.isRunning()) {
 			auton.cancel();
 		}

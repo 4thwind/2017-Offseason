@@ -5,22 +5,25 @@ import org.usfirst.frc.team2175.keys.Wiring_K;
 
 import com.ctre.CANTalon;
 
-import edu.wpi.first.wpilibj.DigitalInput;
-
 public class Turret_S extends Base_S {
 	private double maxTurretSpeed;
-	private DigitalInput inputOne;
-	private DigitalInput inputTwo;
+	// /private DigitalInput sensor;
 	private CANTalon turret;
 	private double[] offset;
+	private boolean[] seesTarget;
 	private boolean isAuto;
-	private int pos;
+	private int offPos;
+	private int seePos;
 
 	public Turret_S() {
 		turret = makeMotor(Wiring_K.TURRET);
 		maxTurretSpeed = getSpeed(Behavior_K.TURRET_SPEED);
+		offset = new double[100];
+		seesTarget = new boolean[30];
 		isAuto = true;
-		pos = 0;
+		offPos = 0;
+		seePos = 0;
+		// sensor = new DigitalInput(0);
 	}
 
 	public void turn(double turretTurnSpeed) {
@@ -28,11 +31,18 @@ public class Turret_S extends Base_S {
 	}
 
 	public void use(double offset) {
-		this.offset[pos++] = offset;
+		if (offset == Math.pow(2175.0, 3)) {
+			this.seesTarget[seePos % 30] = false;
+		} else {
+			this.seesTarget[seePos % 30] = true;
+			this.offset[offPos % 100] = offset;
+			offPos++;
+		}
+		seePos++;
 	}
 
 	public void turnAuto() {
-		turret.set(3 * offset[pos] / 100);
+		turret.set(3 * offset[offPos % 100] / 100);
 	}
 
 	public boolean isAutoAim() {
@@ -49,5 +59,9 @@ public class Turret_S extends Base_S {
 
 	public void stop() {
 		turret.set(0);
+	}
+
+	public boolean isSensorTriggered() {
+		return false;
 	}
 }
