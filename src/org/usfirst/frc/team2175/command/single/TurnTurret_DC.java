@@ -18,7 +18,7 @@ public class TurnTurret_DC extends Base_C {
 
 	@Override
 	protected void execute() {
-		if (turret_S.isSensorTriggered()) {
+		if (!turret_S.isSensorTriggered()) {
 			if (turret_S.isAutoAim()) {
 				turret_S.turnAuto();
 			} else {

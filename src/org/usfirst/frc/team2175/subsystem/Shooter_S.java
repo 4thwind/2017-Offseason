@@ -18,36 +18,60 @@ public class Shooter_S extends Base_S {
 		shooterMaster = makeMotor(Wiring_K.SHOOTER_MASTER);
 		shooterSlave = makeMotor(Wiring_K.SHOOTER_SLAVE);
 		agitator = makeMotor(Wiring_K.AGITATOR);
-		feeder = makeMotor(Wiring_K.ELEVATOR);
+		feeder = makeMotor(Wiring_K.FEEDER);
 		shooterSpeed = getSpeed(Behavior_K.SHOOTER_SPEED);
 		agitatorSpeed = getSpeed(Behavior_K.AGITATOR_SPEED);
 		feederSpeed = getSpeed(Behavior_K.FEEDER_SPEED);
 
 		setSlave(shooterSlave, shooterMaster);
+
+		shooterMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		setSlave(shooterSlave, shooterMaster);
+
+		shooterMaster.setPID(0.12, 0.0, 0.5, 0.014, 5000, 0, 0);
+		shooterMaster.setProfile(0);
+		shooterMaster.reverseSensor(false);
+
+		shooterMaster.setVoltageRampRate(36.0);
+		shooterSlave.setVoltageRampRate(36.0);
+
+		shooterMaster.enableBrakeMode(false);
+		shooterSlave.enableBrakeMode(false);
+
+		shooterMaster.clearStickyFaults();
+		shooterSlave.clearStickyFaults();
 	}
 
-	public void runShooterPID() {
-		shooterMaster.set(1800);
+	public double getRpm() {
+		return shooterMaster.getSpeed();
+	}
+
+	public void setRpm(double rpm) {
+		shooterMaster.changeControlMode(CANTalon.TalonControlMode.Speed);
+		shooterMaster.set(rpm);
+	}
+
+	public void setOpenLoop(double speed) {
+		shooterMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		shooterMaster.set(speed);
+	}
+
+	public double getSetpoint() {
+		return shooterMaster.getSetpoint();
 	}
 
 	public void stopShooter() {
 		shooterMaster.set(0);
 	}
 
-	public void runAgitator() {
+	public void feed() {
+		feeder.set(feederSpeed);
 		agitator.set(agitatorSpeed);
 	}
 
-	public void stopAgitator() {
-		agitator.set(0);
-	}
-
-	public void runFeeder() {
-		feeder.set(feederSpeed);
-	}
-
-	public void stopFeeder() {
+	public void stopFeeding() {
 		feeder.set(0);
+		agitator.set(0);
 	}
 
 	public boolean isShooterSpinning() {

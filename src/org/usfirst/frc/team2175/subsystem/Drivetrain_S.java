@@ -18,7 +18,8 @@ public class Drivetrain_S extends Base_S {
 	private CANTalon rightSlaveOne;
 	private CANTalon rightSlaveTwo;
 
-	private Encoder encoder;
+	private Encoder leftEncoder;
+	private Encoder rightEncoder;
 	private RobotDrive robotDrive;
 
 	private DoubleSolenoid driveShifters;
@@ -43,8 +44,11 @@ public class Drivetrain_S extends Base_S {
 		robotDrive = new RobotDrive(leftMaster, rightMaster);
 
 		// navXGyro = new AHRS(SPI.Port.kMXP);
-		encoder = new Encoder(0, 1);
-		encoder.setDistancePerPulse(1);
+		leftEncoder = new Encoder(1, 2);
+		leftEncoder.setDistancePerPulse(1);
+
+		rightEncoder = new Encoder(3, 4);
+		rightEncoder.setDistancePerPulse(1);
 	}
 
 	public void shiftToHighGear() {
@@ -69,19 +73,16 @@ public class Drivetrain_S extends Base_S {
 	}
 
 	public void resetEncoders() {
-		encoder.reset();
+		leftEncoder.reset();
+		rightEncoder.reset();
 	}
 
 	public void resetGyro() {
 		navXGyro.reset();
 	}
 
-	public boolean isCurrentGreatEnough() {
-		return leftMaster.getOutputCurrent() > 30;
-	}
-
 	public int getEncoderDistance() {
-		return encoder.get();
+		return (leftEncoder.get() + rightEncoder.get()) / 2;
 	}
 
 	public double convertFromInchesToClicks(double inchesToDrive) {

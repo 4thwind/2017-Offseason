@@ -5,10 +5,10 @@ import org.usfirst.frc.team2175.subsystem.Shooter_S;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RunShooterPID_C extends Command {
+public class RunShooterPercentVBus_C extends Command {
 	Shooter_S shooter_S;
 
-	public RunShooterPID_C() {
+	public RunShooterPercentVBus_C() {
 		shooter_S = ServiceLocator.get(Shooter_S.class);
 
 		requires(shooter_S);
@@ -16,7 +16,7 @@ public class RunShooterPID_C extends Command {
 
 	@Override
 	public void initialize() {
-		shooter_S.setRpm(3000);
+		shooter_S.setOpenLoop(0.65);
 	}
 
 	@Override

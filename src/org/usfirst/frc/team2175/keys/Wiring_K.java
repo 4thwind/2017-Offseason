@@ -13,7 +13,7 @@ public class Wiring_K {
 	public static final String TURRET = "turret.motor";
 	public static final String SHOOTER_MASTER = "shooter.motor.master";
 	public static final String SHOOTER_SLAVE = "shooter.motor.slave";
-	public static final String ELEVATOR = "elevator.motor";
+	public static final String FEEDER = "elevator.motor";
 
 	public static final String CLIMBER = "climber.motor";
 

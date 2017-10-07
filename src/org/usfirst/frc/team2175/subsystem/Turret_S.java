@@ -5,9 +5,12 @@ import org.usfirst.frc.team2175.keys.Wiring_K;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.Encoder;
+
 public class Turret_S extends Base_S {
 	private double maxTurretSpeed;
 	// /private DigitalInput sensor;
+	private Encoder encoder;
 	private CANTalon turret;
 	private double[] offset;
 	private boolean[] seesTarget;
@@ -18,6 +21,7 @@ public class Turret_S extends Base_S {
 	public Turret_S() {
 		turret = makeMotor(Wiring_K.TURRET);
 		maxTurretSpeed = getSpeed(Behavior_K.TURRET_SPEED);
+		encoder = new Encoder(1, 2);
 		offset = new double[100];
 		seesTarget = new boolean[30];
 		isAuto = true;

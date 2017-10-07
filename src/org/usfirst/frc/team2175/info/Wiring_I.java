@@ -27,7 +27,7 @@ public class Wiring_I {
 		put("8, false", "8, false", Wiring_K.SHOOTER_MASTER);
 		put("9, false", "9, false", Wiring_K.SHOOTER_SLAVE);
 		put("10, false", "10, false", Wiring_K.TURRET);
-		put("11, false", "11, false", Wiring_K.ELEVATOR);
+		put("11, false", "11, false", Wiring_K.FEEDER);
 
 		put("12, false", "12, false", Wiring_K.CLIMBER);
 
