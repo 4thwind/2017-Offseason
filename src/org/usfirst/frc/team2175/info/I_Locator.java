@@ -8,7 +8,6 @@ public class I_Locator {
 	private HashMap<String, String> wiringInfoMap;
 	private HashMap<String, String> joystickInfoMap;
 	private HashMap<String, Double> behaviorInfoMap;
-	private boolean isComp = true;
 
 	public I_Locator() {
 		makeInfoMaps();
@@ -20,7 +19,7 @@ public class I_Locator {
 		behaviorInfoMap = behaviorInfo.getMap();
 		Joystick_I joystickInfo = new Joystick_I();
 		joystickInfoMap = joystickInfo.getMap();
-		Wiring_I wiringInfo = new Wiring_I(isComp);
+		Wiring_I wiringInfo = new Wiring_I();
 		wiringInfoMap = wiringInfo.getMap();
 	}
 

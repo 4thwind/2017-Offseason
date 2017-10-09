@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SPI;
 
 public class Drivetrain_S extends Base_S {
 	private CANTalon leftMaster;
@@ -17,12 +18,12 @@ public class Drivetrain_S extends Base_S {
 	private CANTalon rightMaster;
 	private CANTalon rightSlaveOne;
 	private CANTalon rightSlaveTwo;
-
-	private Encoder leftEncoder;
-	private Encoder rightEncoder;
 	private RobotDrive robotDrive;
 
 	private DoubleSolenoid driveShifters;
+
+	private Encoder leftEncoder;
+	private Encoder rightEncoder;
 
 	private AHRS navXGyro;
 
@@ -34,8 +35,6 @@ public class Drivetrain_S extends Base_S {
 		rightSlaveOne = makeMotor(Wiring_K.RIGHT_SLAVEONE);
 		rightSlaveTwo = makeMotor(Wiring_K.RIGHT_SLAVETWO);
 
-		driveShifters = new DoubleSolenoid(1, 2);
-
 		setSlave(leftSlaveOne, leftMaster);
 		setSlave(leftSlaveTwo, leftMaster);
 		setSlave(rightSlaveOne, rightMaster);
@@ -43,12 +42,11 @@ public class Drivetrain_S extends Base_S {
 
 		robotDrive = new RobotDrive(leftMaster, rightMaster);
 
-		// navXGyro = new AHRS(SPI.Port.kMXP);
-		leftEncoder = new Encoder(1, 2);
-		leftEncoder.setDistancePerPulse(1);
+		driveShifters = makeSolenoid(Wiring_K.DRIVE_SHIFTERS);
 
-		rightEncoder = new Encoder(3, 4);
-		rightEncoder.setDistancePerPulse(1);
+		navXGyro = new AHRS(SPI.Port.kMXP);
+		leftEncoder = makeEncoder(Wiring_K.LEFT_ENCODER);
+		rightEncoder = makeEncoder(Wiring_K.RIGHT_ENCODER);
 	}
 
 	public void shiftToHighGear() {
@@ -69,7 +67,7 @@ public class Drivetrain_S extends Base_S {
 	}
 
 	public void straightArcadeDrive(double moveValue) {
-		arcadeDrive(moveValue, -navXGyro.getAngle() / 45);
+		arcadeDrive(moveValue, getAngle() / 45);
 	}
 
 	public void resetEncoders() {
@@ -81,16 +79,24 @@ public class Drivetrain_S extends Base_S {
 		navXGyro.reset();
 	}
 
-	public int getEncoderDistance() {
-		return (leftEncoder.get() + rightEncoder.get()) / 2;
-	}
-
-	public double convertFromInchesToClicks(double inchesToDrive) {
-		return inchesToDrive * 40.21;
-	}
-
 	public void resetSensors() {
 		resetEncoders();
 		resetGyro();
+	}
+
+	public double getAngle() {
+		return navXGyro.getAngle();
+	}
+
+	public double inchesToTicks(double inchesToDrive) {
+		return inchesToDrive * 40.21;
+	}
+
+	public double getLeftEncoder() {
+		return leftEncoder.getDistance();
+	}
+
+	public double getRightEncoder() {
+		return rightEncoder.getDistance();
 	}
 }

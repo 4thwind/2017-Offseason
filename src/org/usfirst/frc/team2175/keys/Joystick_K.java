@@ -10,8 +10,5 @@ public class Joystick_K {
 	public static final String SHOOT = "button.shoot";
 	public static final String AGITATE = "button.agitate";
 	public static final String BALL_INTAKE = "button.intake.ball";
-	public static final String TOGGLE_CONTROL = "button.turret";
-
-	public static final String POV_SHOOTER = "pov.270";
-	public static final String POV_AGITATOR = "pov.90";
+	public static final String AUTO_AIM = "button.turret";
 }

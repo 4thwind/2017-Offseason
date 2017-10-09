@@ -1,19 +1,20 @@
-package org.usfirst.frc.team2175.command.single;
+package org.usfirst.frc.team2175.command.teleop;
 
-import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.subsystem.Shooter_S;
 
-public class RunAgitator_C extends Base_C {
+public class RunAgitation_C extends Base_C {
 	Shooter_S shooter_S;
 
-	public RunAgitator_C() {
-		shooter_S = ServiceLocator.get(Shooter_S.class);
+	public RunAgitation_C() {
+		shooter_S = get(Shooter_S.class);
 	}
 
 	@Override
 	protected void initialize() {
-		shooter_S.feed();
+		if (shooter_S.isShooterSpinning()) {
+			shooter_S.feed();
+		}
 	}
 
 	@Override

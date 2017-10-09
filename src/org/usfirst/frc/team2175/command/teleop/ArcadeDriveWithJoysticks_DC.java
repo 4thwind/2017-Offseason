@@ -1,6 +1,5 @@
-package org.usfirst.frc.team2175.command.single;
+package org.usfirst.frc.team2175.command.teleop;
 
-import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.control.DriverStation;
 import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
@@ -10,8 +9,8 @@ public class ArcadeDriveWithJoysticks_DC extends Base_C {
 	DriverStation driverStation;
 
 	public ArcadeDriveWithJoysticks_DC() {
-		drivetrain_S = ServiceLocator.get(Drivetrain_S.class);
-		driverStation = ServiceLocator.get(DriverStation.class);
+		drivetrain_S = get(Drivetrain_S.class);
+		driverStation = get(DriverStation.class);
 
 		requires(drivetrain_S);
 	}

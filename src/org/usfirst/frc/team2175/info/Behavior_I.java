@@ -17,12 +17,12 @@ public class Behavior_I {
 		// put(info, id);
 		put(1.0, Behavior_K.CLIMBER_MAX_SPEED);
 
-		put(0.6, Behavior_K.AGITATOR_SPEED);
+		put(-1.0, Behavior_K.AGITATOR_SPEED);
 		put(-0.6, Behavior_K.AGITATOR_REVERSE_SPEED);
-		put(0.3, Behavior_K.TURRET_SPEED);
+		put(0.2, Behavior_K.TURRET_SPEED);
 		put(0.65, Behavior_K.SHOOTER_SPEED);
 		put(-0.25, Behavior_K.SHOOTER_REVERSE_SPEED);
-		put(0.5, Behavior_K.FEEDER_SPEED);
+		put(-1.0, Behavior_K.FEEDER_SPEED);
 		put(0.7, Behavior_K.BALL_INTAKE_SPEED);
 		put(-0.7, Behavior_K.BALL_INTAKE_REVERSE_SPEED);
 

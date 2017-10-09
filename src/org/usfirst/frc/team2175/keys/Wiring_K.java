@@ -23,9 +23,12 @@ public class Wiring_K {
 	public static final String DRIVE_SHIFTERS = "drivetrain.solenoid.driveshifters";
 
 	// Analog Keys
-	public static final String GYRO = "drivetrain.analog.gyro";
+	public static final String PRESSURE = "drivetrain.analog.pressure";
 
 	// Digital Keys
 	public static final String LEFT_ENCODER = "drivetrain.digital.encoder.left";
 	public static final String RIGHT_ENCODER = "drivetrain.digital.encoder.right";
+	public static final String TURRET_ENCODER = "turret.digital.encoder";
+
+	public static final String TURRET_DIO = "turret.digital.dio";
 }

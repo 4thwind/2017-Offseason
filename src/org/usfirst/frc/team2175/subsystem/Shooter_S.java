@@ -10,8 +10,8 @@ public class Shooter_S extends Base_S {
 	private CANTalon shooterSlave;
 	private CANTalon agitator;
 	private CANTalon feeder;
-	private double shooterSpeed;
 	private double agitatorSpeed;
+	private double shooterSpeed;
 	private double feederSpeed;
 
 	public Shooter_S() {
@@ -19,16 +19,14 @@ public class Shooter_S extends Base_S {
 		shooterSlave = makeMotor(Wiring_K.SHOOTER_SLAVE);
 		agitator = makeMotor(Wiring_K.AGITATOR);
 		feeder = makeMotor(Wiring_K.FEEDER);
-		shooterSpeed = getSpeed(Behavior_K.SHOOTER_SPEED);
+
 		agitatorSpeed = getSpeed(Behavior_K.AGITATOR_SPEED);
+		shooterSpeed = getSpeed(Behavior_K.SHOOTER_SPEED);
 		feederSpeed = getSpeed(Behavior_K.FEEDER_SPEED);
 
 		setSlave(shooterSlave, shooterMaster);
 
-		shooterMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		setSlave(shooterSlave, shooterMaster);
-
-		shooterMaster.setPID(0.12, 0.0, 0.5, 0.014, 5000, 0, 0);
+		shooterMaster.setPID(0.18, 0.0, 0.5, 0.014, 5000, 0, 0);
 		shooterMaster.setProfile(0);
 		shooterMaster.reverseSensor(false);
 
@@ -42,26 +40,22 @@ public class Shooter_S extends Base_S {
 		shooterSlave.clearStickyFaults();
 	}
 
-	public double getRpm() {
-		return shooterMaster.getSpeed();
+	public void shoot() {
+		setRpm(shooterSpeed);
 	}
 
-	public void setRpm(double rpm) {
+	private void setRpm(double rpm) {
 		shooterMaster.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMaster.set(rpm);
 	}
 
-	public void setOpenLoop(double speed) {
+	public void stop() {
 		shooterMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		shooterMaster.set(speed);
-	}
-
-	public double getSetpoint() {
-		return shooterMaster.getSetpoint();
-	}
-
-	public void stopShooter() {
 		shooterMaster.set(0);
+	}
+
+	public double getRpm() {
+		return shooterMaster.getSpeed();
 	}
 
 	public void feed() {

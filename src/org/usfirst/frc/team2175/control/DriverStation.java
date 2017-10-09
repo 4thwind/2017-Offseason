@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2175.control;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import org.usfirst.frc.team2175.ServiceLocator;
@@ -12,7 +11,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class DriverStation {
 	private HashMap<String, JoystickButton> buttonMap;
-	private HashMap<String, POVTrigger> povMap;
 	private I_Locator locator;
 
 	private Joystick leftJoystick;
@@ -26,7 +24,6 @@ public class DriverStation {
 		gamepad = makeJoystick(Joystick_K.GAMEPAD);
 
 		buttonMap = new HashMap<>();
-		povMap = new HashMap<>();
 		registerToMap();
 
 		ServiceLocator.register(this);
@@ -38,37 +35,20 @@ public class DriverStation {
 	}
 
 	private void registerToMap() {
-		Joystick_K jKeys = new Joystick_K();
-		for (Field field : jKeys.getClass().getDeclaredFields()) {
-			String id = "";
-			try {
-				id = field.toString();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			if (id.contains("button")) {
-				createButtonFromInfo(locator.getJoystickInfo(id));
-			} else if (id.contains("pov")) {
-				createPOVFromInfo(locator.getJoystickInfo(id));
-			}
-		}
+		createButton(Joystick_K.SHIFT_GEARS);
+
+		createButton(Joystick_K.SHOOT);
+		createButton(Joystick_K.AGITATE);
+		createButton(Joystick_K.AUTO_AIM);
+		createButton(Joystick_K.BALL_INTAKE);
 	}
 
-	private void createButtonFromInfo(String id) {
-		System.out.println(id);
-		String[] data = id.split(",");
+	private void createButton(String id) {
+		String[] data = locator.getJoystickInfo(id).split(",");
 		JoystickButton button = new JoystickButton(
 				joystickForName(data[0].trim()),
 				Integer.parseInt(data[1].trim()));
 		buttonMap.put(id, button);
-	}
-
-	private void createPOVFromInfo(String id) {
-		System.out.println(id);
-		String[] data = id.split(",");
-		POVTrigger pov = new POVTrigger(joystickForName(data[0].trim()),
-				Integer.parseInt(data[1].trim()));
-		povMap.put(id, pov);
 	}
 
 	private Joystick joystickForName(final String name) {
@@ -96,7 +76,7 @@ public class DriverStation {
 	}
 
 	public double getMoveValue() {
-		return leftJoystick.getY();
+		return getOutput(leftJoystick.getY(), .1);
 	}
 
 	public double getTurnValue() {
@@ -107,6 +87,10 @@ public class DriverStation {
 		return gamepad.getRawAxis(1);
 	}
 
+	public double getTurretTurnSpeed() {
+		return gamepad.getRawAxis(2);
+	}
+
 	public double getOutput(final double input, final double deadbandSize) {
 		double output = 0;
 		if (Math.abs(input) >= deadbandSize) {
@@ -115,9 +99,5 @@ public class DriverStation {
 			output = slope * sign * (Math.abs(input) - deadbandSize);
 		}
 		return output;
-	}
-
-	public double getTurretTurnSpeed() {
-		return gamepad.getRawAxis(2);
 	}
 }

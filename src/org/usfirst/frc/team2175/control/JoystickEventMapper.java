@@ -1,12 +1,13 @@
 package org.usfirst.frc.team2175.control;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.command.single.RunAgitator_C;
-import org.usfirst.frc.team2175.command.single.RunBallIntakeIn_C;
-import org.usfirst.frc.team2175.command.single.RunShooterPID_C;
-import org.usfirst.frc.team2175.command.single.ShiftToHighGear_C;
-import org.usfirst.frc.team2175.command.single.ToggleTurretControl_C;
+import org.usfirst.frc.team2175.command.teleop.AimShooter_C;
+import org.usfirst.frc.team2175.command.teleop.RunAgitation_C;
+import org.usfirst.frc.team2175.command.teleop.RunBallIntakeIn_C;
+import org.usfirst.frc.team2175.command.teleop.RunShooter_C;
+import org.usfirst.frc.team2175.command.teleop.ShiftToHighGear_C;
 import org.usfirst.frc.team2175.keys.Joystick_K;
+
 public class JoystickEventMapper {
 
 	public JoystickEventMapper() {
@@ -16,12 +17,12 @@ public class JoystickEventMapper {
 				.whileHeld(new ShiftToHighGear_C());
 
 		driverStation.getButton(Joystick_K.SHOOT)
-				.toggleWhenPressed(new RunShooterPID_C());
+				.toggleWhenPressed(new RunShooter_C());
 		driverStation.getButton(Joystick_K.AGITATE)
-				.toggleWhenPressed(new RunAgitator_C());
+				.toggleWhenPressed(new RunAgitation_C());
 		driverStation.getButton(Joystick_K.BALL_INTAKE)
 				.toggleWhenPressed(new RunBallIntakeIn_C());
-		driverStation.getButton(Joystick_K.TOGGLE_CONTROL)
-				.toggleWhenPressed(new ToggleTurretControl_C());
+		driverStation.getButton(Joystick_K.AUTO_AIM)
+				.whenPressed(new AimShooter_C());
 	}
 }

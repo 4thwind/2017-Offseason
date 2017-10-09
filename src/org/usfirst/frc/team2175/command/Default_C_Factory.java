@@ -1,9 +1,9 @@
 package org.usfirst.frc.team2175.command;
 
 import org.usfirst.frc.team2175.ServiceLocator;
-import org.usfirst.frc.team2175.command.single.ArcadeDriveWithJoysticks_DC;
-import org.usfirst.frc.team2175.command.single.RunClimber_DC;
-import org.usfirst.frc.team2175.command.single.TurnTurret_DC;
+import org.usfirst.frc.team2175.command.teleop.ArcadeDriveWithJoysticks_DC;
+import org.usfirst.frc.team2175.command.teleop.RunClimber_DC;
+import org.usfirst.frc.team2175.command.teleop.TurnTurret_DC;
 import org.usfirst.frc.team2175.subsystem.Climber_S;
 import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 import org.usfirst.frc.team2175.subsystem.Turret_S;

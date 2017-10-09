@@ -5,27 +5,25 @@ import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.command.Default_C_Factory;
 import org.usfirst.frc.team2175.control.JoystickEventMapper;
 import org.usfirst.frc.team2175.info.I_Locator;
-import org.usfirst.frc.team2175.loop.AndroidInfo_L;
-import org.usfirst.frc.team2175.loop.Scheduler_L;
-import org.usfirst.frc.team2175.loop.SmartDashboard_L;
+import org.usfirst.frc.team2175.loop.LoopManager;
 import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 import org.usfirst.frc.team2175.subsystem.S_Factory;
+import org.usfirst.frc.team2175.subsystem.Turret_S;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
-	Scheduler_L schedulerLoop = new Scheduler_L();
-	SmartDashboard_L smartDashboardLoop;
-	AndroidInfo_L androidInfoLoop;
+	LoopManager loopManager;
 	Drivetrain_S drivetrainSubsystem;
+	Turret_S turret_S;
 	Command auton;
 
 	@Override
 	public void robotInit() {
+		loopManager = new LoopManager();
 		makeSystems();
-		makeLoops();
 	}
 
 	private void makeSystems() {
@@ -37,18 +35,11 @@ public class Robot extends IterativeRobot {
 		drivetrainSubsystem = ServiceLocator.get(Drivetrain_S.class);
 	}
 
-	private void makeLoops() {
-		schedulerLoop.start();
-		smartDashboardLoop = new SmartDashboard_L();
-		smartDashboardLoop.start();
-		androidInfoLoop = new AndroidInfo_L();
-		androidInfoLoop.start();
-	}
-
 	@Override
 	public void autonomousInit() {
 		drivetrainSubsystem.resetSensors();
-		auton = smartDashboardLoop.getAuton();
+
+		auton = loopManager.getAuton();
 		Scheduler.getInstance().add(auton);
 	}
 

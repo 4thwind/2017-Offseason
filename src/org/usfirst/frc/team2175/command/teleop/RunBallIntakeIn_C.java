@@ -1,6 +1,5 @@
-package org.usfirst.frc.team2175.command.single;
+package org.usfirst.frc.team2175.command.teleop;
 
-import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.subsystem.BallIntake_S;
 
@@ -8,7 +7,9 @@ public class RunBallIntakeIn_C extends Base_C {
 	private BallIntake_S ballIntake_S;
 
 	public RunBallIntakeIn_C() {
-		ballIntake_S = ServiceLocator.get(BallIntake_S.class);
+		ballIntake_S = get(BallIntake_S.class);
+
+		requires(ballIntake_S);
 	}
 
 	@Override

@@ -5,6 +5,9 @@ import org.usfirst.frc.team2175.info.I_Locator;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -17,10 +20,31 @@ public class Base_S extends Subsystem {
 	}
 
 	protected CANTalon makeMotor(String id) {
-		String[] info = infoLocator.getWiringInfo(id).split(",");
-		CANTalon motor = new CANTalon(Integer.parseInt(info[0].trim()));
-		motor.reverseOutput(info[1].trim().contains("true"));
+		String data[] = infoLocator.getWiringInfo(id).split(",");
+		CANTalon motor = new CANTalon(parseInt(data[0]));
+		motor.reverseOutput(data[1].contains("true"));
 		return motor;
+	}
+
+	private int parseInt(String port) {
+		return Integer.parseInt(port.trim());
+	}
+
+	protected Encoder makeEncoder(String id) {
+		String data[] = infoLocator.getWiringInfo(id).split(",");
+		Encoder enc = new Encoder(parseInt(data[0]), parseInt(data[1]));
+		enc.setDistancePerPulse(parseInt(data[2]));
+		enc.setReverseDirection(data[3].contains("true"));
+		return enc;
+	}
+
+	protected DigitalInput makeDIO(String id) {
+		return new DigitalInput(parseInt(infoLocator.getWiringInfo(id)));
+	}
+
+	protected DoubleSolenoid makeSolenoid(String id) {
+		String data[] = infoLocator.getWiringInfo(id).split(",");
+		return new DoubleSolenoid(parseInt(data[0]), parseInt(data[1]));
 	}
 
 	protected double getSpeed(String id) {

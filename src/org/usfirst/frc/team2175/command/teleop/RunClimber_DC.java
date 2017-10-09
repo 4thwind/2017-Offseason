@@ -1,6 +1,5 @@
-package org.usfirst.frc.team2175.command.single;
+package org.usfirst.frc.team2175.command.teleop;
 
-import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.command.Base_C;
 import org.usfirst.frc.team2175.control.DriverStation;
 import org.usfirst.frc.team2175.subsystem.Climber_S;
@@ -10,14 +9,14 @@ public class RunClimber_DC extends Base_C {
 	private DriverStation driverStation;
 
 	public RunClimber_DC() {
-		climber_S = ServiceLocator.get(Climber_S.class);
-		driverStation = ServiceLocator.get(DriverStation.class);
+		climber_S = get(Climber_S.class);
+		driverStation = get(DriverStation.class);
 
 		requires(climber_S);
 	}
 
 	@Override
-	protected void initialize() {
+	protected void execute() {
 		climber_S.setClimberSpeed(driverStation.getClimberSpinSpeed());
 	}
 

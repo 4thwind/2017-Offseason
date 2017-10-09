@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2175.loop;
 
 import org.usfirst.frc.team2175.ServiceLocator;
+import org.usfirst.frc.team2175.subsystem.Shooter_S;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -32,7 +33,8 @@ public class SmartDashboard_L extends Control_L {
 	}
 
 	private void showInfo() {
-		// TODO Auto-generated method stub
+		SmartDashboard.putNumber("Shooter Speed",
+				ServiceLocator.get(Shooter_S.class).getRpm());
 	}
 
 	public Command getAuton() {
