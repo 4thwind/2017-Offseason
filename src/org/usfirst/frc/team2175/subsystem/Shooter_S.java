@@ -26,7 +26,7 @@ public class Shooter_S extends Base_S {
 
 		setSlave(shooterSlave, shooterMaster);
 
-		shooterMaster.setPID(0.18, 0.0, 0.5, 0.014, 5000, 0, 0);
+		shooterMaster.setPID(0.195, 0.0, 0.5, 0.014, 5000, 0, 0);
 		shooterMaster.setProfile(0);
 		shooterMaster.reverseSensor(false);
 

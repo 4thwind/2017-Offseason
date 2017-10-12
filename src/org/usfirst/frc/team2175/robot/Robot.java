@@ -5,25 +5,26 @@ import org.usfirst.frc.team2175.ServiceLocator;
 import org.usfirst.frc.team2175.command.Default_C_Factory;
 import org.usfirst.frc.team2175.control.JoystickEventMapper;
 import org.usfirst.frc.team2175.info.I_Locator;
-import org.usfirst.frc.team2175.loop.LoopManager;
+import org.usfirst.frc.team2175.loop.Scheduler_L;
 import org.usfirst.frc.team2175.subsystem.Drivetrain_S;
 import org.usfirst.frc.team2175.subsystem.S_Factory;
 import org.usfirst.frc.team2175.subsystem.Turret_S;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
-	LoopManager loopManager;
 	Drivetrain_S drivetrainSubsystem;
 	Turret_S turret_S;
 	Command auton;
 
+	Scheduler_L schedulerLoop = new Scheduler_L();
+
 	@Override
 	public void robotInit() {
-		loopManager = new LoopManager();
 		makeSystems();
+		new JoystickEventMapper();
+		schedulerLoop.start();
 	}
 
 	private void makeSystems() {
@@ -39,8 +40,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		drivetrainSubsystem.resetSensors();
 
-		auton = loopManager.getAuton();
-		Scheduler.getInstance().add(auton);
+		// auton = loopManager.getAuton();
+		// Scheduler.getInstance().add(auton);
 	}
 
 	@Override
@@ -49,7 +50,6 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		new JoystickEventMapper();
 		if (auton != null && auton.isRunning()) {
 			auton.cancel();
 		}
