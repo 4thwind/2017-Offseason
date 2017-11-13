@@ -30,14 +30,14 @@ public class Shooter_S extends Base_S {
 		shooterMaster.setProfile(0);
 		shooterMaster.reverseSensor(false);
 
-		shooterMaster.setVoltageRampRate(36.0);
-		shooterSlave.setVoltageRampRate(36.0);
+		setUpMotor(shooterMaster);
+		setUpMotor(shooterSlave);
+	}
 
-		shooterMaster.enableBrakeMode(false);
-		shooterSlave.enableBrakeMode(false);
-
-		shooterMaster.clearStickyFaults();
-		shooterSlave.clearStickyFaults();
+	private void setUpMotor(CANTalon motor) {
+		motor.setVoltageRampRate(36.0);
+		motor.enableBrakeMode(false);
+		motor.clearStickyFaults();
 	}
 
 	public void shoot() {
@@ -58,9 +58,14 @@ public class Shooter_S extends Base_S {
 		return shooterMaster.getSpeed();
 	}
 
-	public void feed() {
+	public void feed(double time) {
+		double multiplier = getMultiplier(time);
 		feeder.set(feederSpeed);
-		agitator.set(agitatorSpeed);
+		agitator.set(multiplier * agitatorSpeed);
+	}
+
+	private double getMultiplier(double time) {
+		return (time < 4) ? time * .25 : 1;
 	}
 
 	public void stopFeeding() {

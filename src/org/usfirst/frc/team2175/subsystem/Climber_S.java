@@ -16,7 +16,6 @@ public class Climber_S extends Base_S {
 	}
 
 	public void setClimberSpeed(double speed) {
-		double correctSpeed = (speed > 0) ? speed * maxClimberSpeed : 0;
-		climber.set(correctSpeed);
+		climber.set((speed > 0) ? speed * maxClimberSpeed : 0);
 	}
 }

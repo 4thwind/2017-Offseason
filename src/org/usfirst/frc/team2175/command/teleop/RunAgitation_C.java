@@ -32,10 +32,12 @@ public class RunAgitation_C extends Base_C {
 
 	@Override
 	protected void execute() {
-		timeWaited = System.currentTimeMillis() - timeInitialized;
+		double currTime = System.currentTimeMillis();
+		timeWaited = currTime - timeInitialized;
 		if (timeWaited >= timeToWait) {
 			if ((shooter_S.isShooterSpinning() && !isAuton) || (isAuton)) {
-				shooter_S.feed();
+				shooter_S
+						.feed((currTime - timeToWait - timeInitialized) / 1000);
 			}
 		}
 	}

@@ -19,7 +19,7 @@ public class Behavior_I {
 
 		put(-1.0, Behavior_K.AGITATOR_SPEED);
 		put(-0.6, Behavior_K.AGITATOR_REVERSE_SPEED);
-		put(0.2, Behavior_K.TURRET_SPEED);
+		put(0.3, Behavior_K.TURRET_SPEED);
 		put(3600.0, Behavior_K.SHOOTER_SPEED);
 		put(-0.25, Behavior_K.SHOOTER_REVERSE_SPEED);
 		put(-1.0, Behavior_K.FEEDER_SPEED);
